@@ -1,5 +1,5 @@
 # pyvts
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![issue](https://img.shields.io/github/issues/genteki/pyvts)](https://github.com/Genteki/pyvts/issues)
 
 
 A python library for interacting with the [VTube Studio API](https://github.com/DenchiSoft/VTubeStudio).

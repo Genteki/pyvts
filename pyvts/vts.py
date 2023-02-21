@@ -4,12 +4,39 @@ import os
 import json
 from pyvts import vts_request
 
+API_VERSION = "1.0"
+API_NAME = "VTubeStudioPublicAPI"
+PLUGIN_NAME = "your plugin name"
+REQUEST_ID = "test"
+DEVELOPERER = "genteki"
+
 class vts:
-    def __init__(self, port=8001) -> None:
+    def __init__(self, port=8001, **kwd) -> None:
         self.port = port
         self.websocket = None
         self.authentic_token = None
-        self.isAuth = False
+        self.connection_status = 0 
+        self.plugin_info = {
+                "pluginName": PLUGIN_NAME,
+                "pluginDeveloper": DEVELOPERER
+        }
+    
+    async def connect(self):
+        try:
+            self.websocket = await websockets.connect('ws://localhost:' + str(self.port))
+        except:
+            print("connection failed")
+            print("please ensure VTubeStudio is running and \nthe API is running on ws://localhost:"+str(self.port))
+    
+    async def close(self) -> None:
+        await self.websocket.close(code=1000, reason="user closed")
+    
+    async def send(self, request_msg:dict) -> dict:
+        await self.websocket.send(json.dumps(request_msg))
+        response_msg = await self.websocket.recv()
+        response_dict = json.loads(response_msg)
+        return response_dict
+        
     
     async def authenticateTokenRequest(self, vts_req:vts_request.VTSRequest=None) -> None:
         # get authentication code from VTubeStudio
@@ -19,7 +46,7 @@ class vts:
             request_msg = vts_req.authenticationToken()
 
         response_dict = await self.request(request_msg)
-        try:  
+        try:
             self.authentic_token = response_dict["data"]["authenticationToken"]
         except:
             print("authentication failed")
@@ -38,13 +65,12 @@ class vts:
         return isAuth
 
 
-    async def request(self, request_msg:dict) -> dict:
-        # send request with request_msg with "vts_request.py"
-        async with websockets.connect('ws://127.0.0.1:' + str(self.port)) as self.websocket:
-            await self.websocket.send(json.dumps(request_msg))
-            response_msg = await self.websocket.recv()
-            response_dict = json.loads(response_msg)
-        return response_dict
+    # async def request(self, request_msg:dict) -> dict:
+    #     # send request with request_msg with "vts_request.py"
+    #     await self.websocket.send(json.dumps(request_msg))
+    #     response_msg = await self.websocket.recv()
+    #     response_dict = json.loads(response_msg)
+    #     return response_dict
     
 
 

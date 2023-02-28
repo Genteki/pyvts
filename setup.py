@@ -8,10 +8,11 @@ import pyvts
 DESCRIPTION = "A python library for interacting with the VTube Studio API"
 VERSION = pyvts.__version__
 
-setup(name='gplearn',
+setup(name='pyvts',
       version=VERSION,
       description=DESCRIPTION,
       long_description=open("README.md").read(),
+      keywords='vtubestudio',
       classifiers=['Development Status :: Alpha',
                    'Intended Audience :: Developers',
                    'License :: MIT',
@@ -28,5 +29,5 @@ setup(name='gplearn',
       license='MIT',
       packages=find_packages(exclude=['*.tests',
                                       '*.tests.*']),
-      install_requires=['websockets>=10.2',
-                        'aiofile>=3.8.1'])
+      install_requires=['websockets',
+                        'aiofile'])

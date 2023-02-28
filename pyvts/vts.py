@@ -1,28 +1,43 @@
 import os, json, asyncio
 import websockets
 import aiofiles
-import config
-from pyvts import vts_request
+from pyvts import vts_request, config
 
-API_VERSION = config.vts_api["api_version"]
-API_NAME = config.vts_api["api_name"]
+API_VERSION = config.vts_api["version"]
+API_NAME = config.vts_api["name"]
 PLUGIN_NAME = "your plugin name"
 REQUEST_ID = "test"
 DEVELOPERER = "genteki"
 
 class vts:
-    def __init__(self, plugin_info=config.plugin_default,
-                 vts_api_info=config.vts_api, **kwd) -> None:
+    def __init__(self, plugin_info: dict = config.plugin_default,
+                 vts_api_info: dict = config.vts_api, **kwargs) -> None:
+        '''
+        plugin_info: {
+            "plugin_name": your plugin name (str),
+            "developer": your name (str),
+            "icon": (optional) your icon if exist (img),
+            "authentication_token_path": str
+        }
+        vts_api_info: {
+            "version": str,
+            "name": str,
+            "port": int
+        }
+        '''
         self.port = vts_api_info["port"]
         self.websocket = None
         self.authentic_token = None
-        self.connection_status = 0
+        self._connection_status = 0  # 0: not connected, 1: connected
+        self._authentic_status = 0 # 0: no authen & no token, 1: no authen & yes token, 2: authen, -1: wrong token
         self.plugin_name = plugin_info["plugin_name"]
         self.plugin_developer = plugin_info["developer"]
-        self.plugin_icon = plugin_info["icon"]
+        self.plugin_icon = plugin_info["icon"] if "icon" in plugin_info.keys() else None
         self.token_path = plugin_info["authentication_token_path"]
         self.vts_request = vts_request.VTSRequest(developer=self.plugin_developer, 
-                                                  plugin_name=self.plugin_name)
+                                                  plugin_name=self.plugin_name, **kwargs)
+        for key, value in kwargs.items():
+            setattr(self, key ,value)
     
     async def connect(self):
         try:
@@ -35,7 +50,7 @@ class vts:
     async def close(self) -> None:
         await self.websocket.close(code=1000, reason="user closed")
     
-    async def send(self, request_msg:dict) -> dict:
+    async def send(self, request_msg: dict) -> dict:
         await self.websocket.send(json.dumps(request_msg))
         response_msg = await self.websocket.recv()
         response_dict = json.loads(response_msg)
@@ -47,6 +62,8 @@ class vts:
         response_dict = await self.request(request_msg)
         try:
             self.authentic_token = response_dict["data"]["authenticationToken"]
+            if self._authentic_status == 0 or self._authentic_status == -1:
+                self._authentic_status = 1
         except:
             print("authentication failed")
     
@@ -54,14 +71,13 @@ class vts:
         ''' get authenticated from vtubestudio to have more access '''
         require_msg = self.vts_request.authentication(self.authentic_token)
         responese_dict = await self.request(require_msg)
-        isAuth = False
         try:
-            isAuth = responese_dict["data"]["authenticated"]
+            assert responese_dict["data"]["authenticated"], "Authentication Failed"
+            self._authentic_status = 2
         except:
-            print("authentic failed")
+            self._authentic_status = -1
             print(responese_dict["data"])
-        self.isAuth = isAuth
-        return isAuth
+        return self._authentic_status == 2
 
     async def read_token(self) -> str:
         ''' read authentic token from the token file wrote before '''
@@ -76,6 +92,6 @@ class vts:
             assert self.authentic_token is not None, "Has Not Got Authentic Code From VtubeStudio"
             async with aiofiles.open(self.token_path, mode='w') as f_token:
                 await f_token.seek(0)
-                await f_token.write()
+                await f_token.write(self.authentic_token)
         except:
             print("write authentic token files failed")

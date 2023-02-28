@@ -1,15 +1,16 @@
-API_VERSION = "1.0"
-API_NAME = "VTubeStudioPublicAPI"
-PLUGIN_NAME = "your plugin name"
+import config
+
 REQUEST_ID = "test"
-DEVELOPERER = "genteki"
+API_NAME = config.vts_api["api_name"]
+API_VERSION = config.vts_api["api_version"]
 
 class VTSRequest:
-    def __init__(self, developer=DEVELOPERER, plugin_name=PLUGIN_NAME, **kwd) -> None:
+    def __init__(self, developer=config.plugin_default["developer"], 
+                 plugin_name=config.plugin_default["plugin_name"], **kwd) -> None:
         self.developer = developer
         self.plugin_name = plugin_name
-        self.api_version = API_VERSION
-        self.api_name = API_NAME
+        self.api_version = config.vts_api["api_version"]
+        self.api_name = config.vts_api["api_name"]
         self.request_id = REQUEST_ID
         self.icon = None
 

@@ -1,4 +1,5 @@
-import os, json, asyncio
+''' vts connector '''
+import json
 import websockets
 import aiofiles
 from pyvts import vts_request, config
@@ -10,6 +11,7 @@ REQUEST_ID = "test"
 DEVELOPERER = "genteki"
 
 class vts:
+    ''' VtubeStudio Connector '''
     def __init__(self, plugin_info: dict = config.plugin_default,
                  vts_api_info: dict = config.vts_api, **kwargs) -> None:
         '''
@@ -29,11 +31,14 @@ class vts:
         self.websocket = None
         self.authentic_token = None
         self._connection_status = 0  # 0: not connected, 1: connected
-        self._authentic_status = 0 # 0: no authen & no token, 1: no authen & yes token, 2: authen, -1: wrong token
+        self._authentic_status = 0 # 0:no authen & token, 1:has token, 2:authen, -1:wrong token
+        self.api_name = vts_api_info["name"]
+        self.api_version = vts_api_info["version"]
         self.plugin_name = plugin_info["plugin_name"]
         self.plugin_developer = plugin_info["developer"]
         self.plugin_icon = plugin_info["icon"] if "icon" in plugin_info.keys() else None
         self.token_path = plugin_info["authentication_token_path"]
+        self.icon = None
         self.vts_request = vts_request.VTSRequest(developer=self.plugin_developer, 
                                                   plugin_name=self.plugin_name, **kwargs)
         for key, value in kwargs.items():
@@ -50,15 +55,15 @@ class vts:
     async def close(self) -> None:
         await self.websocket.close(code=1000, reason="user closed")
     
-    async def send(self, request_msg: dict) -> dict:
+    async def request(self, request_msg: dict) -> dict:
         await self.websocket.send(json.dumps(request_msg))
         response_msg = await self.websocket.recv()
         response_dict = json.loads(response_msg)
         return response_dict
         
-    async def authenticateTokenRequest(self) -> None:
+    async def authenticate_token_request(self) -> None:
         ''' get authentication code from VTubeStudio '''
-        request_msg = self.vts_request.authenticationToken()
+        request_msg = self.vts_request.authentication_token()
         response_dict = await self.request(request_msg)
         try:
             self.authentic_token = response_dict["data"]["authenticationToken"]

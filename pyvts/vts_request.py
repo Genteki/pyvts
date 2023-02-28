@@ -1,30 +1,35 @@
+''' VtubeStudio API Request Generator '''
 from pyvts import config
 
 API_NAME = config.vts_api["name"]
 API_VERSION = config.vts_api["version"]
 
 class VTSRequest:
+    ''' VtubeStudio API Request Generator '''
     def __init__(self, developer: dict = config.plugin_default["developer"], 
                  plugin_name: dict = config.plugin_default["plugin_name"], **kwargs) -> None:
         self.developer = developer
         self.plugin_name = plugin_name
-        self.api_version = API_NAME
-        self.api_name = API_VERSION
+        self.api_version = API_VERSION
+        self.api_name = API_NAME
         self.icon = None
         for key, value in kwargs.items():
             setattr(self, key ,value)
 
-    def BaseRequest(self, message_type: str, data: dict = {}, request_id = "SomeID") -> dict:
+    def BaseRequest(self, message_type: str, data: dict = None, 
+                    request_id: str = "SomeID") -> dict:
+        # Standard Request
         msg = {
             "apiName": self.api_name,
             "apiVersion": self.api_version,
-            "requestID": self.request_id,
-            "messageType": request_id,
+            "requestID": request_id,
+            "messageType": message_type,
             "data": data
         }
         return msg
     
-    def authenticationToken(self) -> dict:
+    def authentication_token(self) -> dict:
+        ''' generate request msg to requirer authentication_token '''
         # Plugin icons should be 128x128 pixel Base64-encoded PNGs.
         msg_type = "AuthenticationTokenRequest"
         data = {
@@ -43,3 +48,4 @@ class VTSRequest:
             "authenticationToken": token
         }
         return self.BaseRequest(msg_type, data)
+    

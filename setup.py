@@ -1,4 +1,3 @@
-#! /usr/bin/env python
 
 """A python library for interacting with the VTube Studio API"""
 
@@ -11,7 +10,7 @@ VERSION = pyvts.__version__
 setup(name='pyvts',
       version=VERSION,
       description=DESCRIPTION,
-      long_description=open("README.md").read(),
+      long_description=open("README.md", encoding="utf-8").read(),
       keywords='vtubestudio',
       classifiers=['Development Status :: Alpha',
                    'Intended Audience :: Developers',

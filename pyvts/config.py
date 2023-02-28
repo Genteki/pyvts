@@ -1,3 +1,4 @@
+''' default configuration of pyvts '''
 vts_api = {
     "version": "1.0",
     "name": "VTubeStudioPublicAPI",

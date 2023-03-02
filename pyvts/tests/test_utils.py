@@ -13,7 +13,7 @@ class FakeVtubeStudioAPIServer:
 
     async def start(self, port=8001):
         """start server"""
-        self.server = await websockets.serve(self.handler, "localhost", port)
+        self.server = await websockets.serve(self.handler, "127.0.0.1", port)
 
     async def stop(self):
         """stop server"""

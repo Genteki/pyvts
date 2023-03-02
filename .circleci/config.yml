@@ -1,5 +1,21 @@
 version: 2.1
 jobs:
+  static-analysis:
+    docker:
+      - image: python:3.9
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            pip install -r requirements.txt
+      - run:
+          name: Run Flake8
+          command: |
+            pip install flake8
+            flake8
+
+jobs:
   build:
     docker:
       - image: python:3.9

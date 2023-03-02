@@ -1,0 +1,4 @@
+aiofile
+websockets
+pytest
+pytest-asyncio

@@ -1,7 +1,8 @@
-# pylint: disable=W0621, C0116
 ''' unit test for vts.py '''
 import pytest
 import pyvts
+from unittest.mock import patch, AsyncMock, MagicMock
+from .test_utils import FakeVtubeStudioAPIServer
 
 pytest_plugins = ('pytest_asyncio',)
 
@@ -37,3 +38,26 @@ async def test_vts_write_read_token(myvts: pyvts.vts):
     await myvts.read_token()
     assert myvts.authentic_token == second_token_test, \
         "Read Token Is Different To The Rewritten Token"
+
+@pytest.mark.asyncio
+async def test_vts_connect(myvts: pyvts.vts):
+    fake_server = FakeVtubeStudioAPIServer()
+    await fake_server.start()
+    await myvts.connect()
+    assert myvts.get_connection_status(), "connection failed"
+    await myvts.close()
+    assert not myvts.get_authentic_status(), "connection didn't close properly"
+    await fake_server.stop()
+
+@pytest.mark.asyncio
+async def test_vts_authenticate(myvts: pyvts.vts):
+    fake_server = FakeVtubeStudioAPIServer()
+    await fake_server.start()
+    await myvts.connect()
+    await myvts.request_authenticate_token()
+    assert myvts.get_authentic_status() == 1, myvts.authentic_token
+    await myvts.request_authenticate()
+    assert myvts.get_authentic_status() == 2
+    
+    await myvts.close()
+    await fake_server.stop()

@@ -1,15 +1,8 @@
 # pylint: disable=E1101
-''' vts connector '''
 import json
 import websockets
 import aiofiles
 from pyvts import vts_request, config
-
-API_VERSION = config.vts_api["version"]
-API_NAME = config.vts_api["name"]
-PLUGIN_NAME = "your plugin name"
-REQUEST_ID = "test"
-DEVELOPERER = "genteki"
 
 class vts:
     ''' VtubeStudio Connector '''
@@ -48,6 +41,7 @@ class vts:
     async def connect(self):
         try:
             self.websocket = await websockets.connect('ws://localhost:' + str(self.port))
+            self.__connection_status = 1
         except:
             print("connection failed")
             print("Please ensure VTubeStudio is running and")
@@ -55,6 +49,7 @@ class vts:
 
     async def close(self) -> None:
         await self.websocket.close(code=1000, reason="user closed")
+        self.__connection_status = 0
 
     async def request(self, request_msg: dict) -> dict:
         '''
@@ -66,18 +61,19 @@ class vts:
         response_dict = json.loads(response_msg)
         return response_dict
 
-    async def authenticate_token_request(self) -> None:
+    async def request_authenticate_token(self) -> None:
         ''' get authentication code from VTubeStudio '''
         request_msg = self.vts_request.authentication_token()
         response_dict = await self.request(request_msg)
         try:
+            assert "authenticationToken" in response_dict["data"].keys(), response_dict
             self.authentic_token = response_dict["data"]["authenticationToken"]
             if self.__authentic_status == 0 or self.__authentic_status == -1:
                 self.__authentic_status = 1
         except:
             print("authentication failed")
 
-    async def authenticate(self) -> bool:
+    async def request_authenticate(self) -> bool:
         ''' get authenticated from vtubestudio to have more access '''
         require_msg = self.vts_request.authentication(self.authentic_token)
         responese_dict = await self.request(require_msg)
@@ -86,7 +82,7 @@ class vts:
             self.__authentic_status = 2
         except:
             self.__authentic_status = -1
-            print(responese_dict["data"])
+            print(responese_dict)
         return self.__authentic_status == 2
 
     async def read_token(self) -> str:
@@ -109,3 +105,6 @@ class vts:
     def get_authentic_status(self) -> int:
         ''' get authentic status'''
         return self.__authentic_status
+
+    def get_connection_status(self) -> int:
+        return self.__connection_status

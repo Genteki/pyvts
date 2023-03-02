@@ -19,3 +19,8 @@ jobs:
             source env/bin/activate
             coverage run -m pytest
             coverage report
+      - run:
+          name: Upload coverage report to Coveralls
+          command: |
+            pip install coveralls
+            coveralls --rcfile=.coveragerc

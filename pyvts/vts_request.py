@@ -1,4 +1,3 @@
-''' VtubeStudio API Request Generator '''
 from pyvts import config
 
 API_NAME = config.vts_api["name"]

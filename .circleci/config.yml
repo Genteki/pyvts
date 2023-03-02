@@ -17,7 +17,9 @@ jobs:
           name: Run tests
           command: |
             source env/bin/activate
-            pytest
-          background: true
-          port: 8080
-          host: 0.0.0.0
+            coverage run -m pytest
+            coverage report
+      - run:
+          name: Upload coverage report to Codecov
+          command: |
+            bash <(curl -s https://codecov.io/bash)

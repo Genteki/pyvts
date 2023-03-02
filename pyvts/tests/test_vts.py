@@ -1,18 +1,21 @@
+# pylint: disable=W0621
 """ unit test for vts.py """
 import pytest
 import pyvts
-from unittest.mock import patch, AsyncMock, MagicMock
 from .test_utils import FakeVtubeStudioAPIServer
 
 pytest_plugins = ("pytest_asyncio",)
 PORT = 8001
 
+
 @pytest.fixture
 def myvts():
+    """set up vts class for test"""
     return pyvts.vts(port=PORT)
 
 
 def test_vts_kwargs():
+    """test whether vts constructor **kwargs work properly"""
     api_name = "it is not vts"
     icon = "it is an icon"
     myvts = pyvts.vts(api_name=api_name, icon=icon)
@@ -24,6 +27,7 @@ def test_vts_kwargs():
 
 @pytest.mark.asyncio
 async def test_vts_write_read_token(myvts: pyvts.vts):
+    """test the functions to read token from file and save token to file"""
     first_token_test = "it is a token"
     second_token_test = "it is another token"
     # first token test
@@ -47,6 +51,7 @@ async def test_vts_write_read_token(myvts: pyvts.vts):
 
 @pytest.mark.asyncio
 async def test_vts_connect(myvts: pyvts.vts):
+    """test the function to conncect to vts api server"""
     fake_server = FakeVtubeStudioAPIServer()
     await fake_server.start(port=PORT)
     await myvts.connect()
@@ -58,6 +63,7 @@ async def test_vts_connect(myvts: pyvts.vts):
 
 @pytest.mark.asyncio
 async def test_vts_authenticate(myvts: pyvts.vts):
+    """test vts functions to get authentic token and get authenicated from vts api"""
     fake_server = FakeVtubeStudioAPIServer()
     await fake_server.start(port=PORT)
     await myvts.connect()

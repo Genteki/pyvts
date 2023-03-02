@@ -8,3 +8,14 @@ A python library for interacting with the [VTube Studio API](https://github.com/
 Create a class `VTS` connecting to the server running on VTubeStudio (default port: `ws://localhost:8001`).
 
 Implement functions in `VTS` to send/receive text messages to/from the server, to achieve developers' goals. For example, adding new tracking parameters to enable more actions on live2d avatars.
+
+## HW4: Test Coverage
+### Command
+
+    $ pyvts % coverage run -m pytest pyvts/tests
+    $ overage run -m pytest tests  
+### Output
+
+|Name|Stmts|Miss|Cover|
+|:--- |:---:|:---:| ---: |
+|TOTAL | 208 | 16 |  92% |

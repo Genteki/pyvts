@@ -1,4 +1,5 @@
 # pylint: disable=E1101
+""" main class """
 import json
 import websockets
 import aiofiles
@@ -48,17 +49,19 @@ class vts:
             setattr(self, key, value)
 
     async def connect(self):
+        """connect to VtubeStudio API server"""
         try:
             self.websocket = await websockets.connect(
                 "ws://localhost:" + str(self.port)
             )
             self.__connection_status = 1
-        except:
+        except websockets.exceptions.WebSocketException:
             print("connection failed")
             print("Please ensure VTubeStudio is running and")
             print("the API is running on ws://localhost:", str(self.port))
 
     async def close(self) -> None:
+        """close the websocket connection"""
         await self.websocket.close(code=1000, reason="user closed")
         self.__connection_status = 0
 
@@ -81,7 +84,7 @@ class vts:
             self.authentic_token = response_dict["data"]["authenticationToken"]
             if self.__authentic_status == 0 or self.__authentic_status == -1:
                 self.__authentic_status = 1
-        except:
+        except AssertionError:
             print("authentication failed")
 
     async def request_authenticate(self) -> bool:
@@ -91,7 +94,7 @@ class vts:
         try:
             assert responese_dict["data"]["authenticated"], "Authentication Failed"
             self.__authentic_status = 2
-        except:
+        except AssertionError:
             self.__authentic_status = -1
             print(responese_dict)
         return self.__authentic_status == 2
@@ -112,7 +115,7 @@ class vts:
             async with aiofiles.open(self.token_path, mode="w") as f_token:
                 await f_token.seek(0)
                 await f_token.write(self.authentic_token)
-        except:
+        except FileNotFoundError:
             print("write authentic token files failed")
 
     def get_authentic_status(self) -> int:
@@ -120,4 +123,5 @@ class vts:
         return self.__authentic_status
 
     def get_connection_status(self) -> int:
+        """get connection status"""
         return self.__connection_status

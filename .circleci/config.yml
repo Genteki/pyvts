@@ -1,12 +1,8 @@
 version: 2.1
 
-workflows:
-  jobs:
-    - static-analysis
-    - build
 
 jobs:
-  static-analysis:
+  static_analysis:
     docker:
       - image: python:3.9
     steps:
@@ -44,3 +40,9 @@ jobs:
           name: Upload coverage report to Codecov
           command: |
             bash <(curl -s https://codecov.io/bash)
+
+workflows:
+  test_my_lib:
+    jobs:
+      - static_analysis
+      - build

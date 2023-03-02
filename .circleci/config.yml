@@ -17,7 +17,8 @@ jobs:
           name: Run tests
           command: |
             source env/bin/activate
-            pytest
+            coverage run -m pytest
+            coverage report
           background: true
-          port: 8080
+          port: 8001
           host: 0.0.0.0

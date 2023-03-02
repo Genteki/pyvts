@@ -1,4 +1,5 @@
 # pylint: disable=E1101
+""" main class """
 import json
 import websockets
 import aiofiles
@@ -48,6 +49,7 @@ class vts:
             setattr(self, key, value)
 
     async def connect(self):
+        """connect to VtubeStudio API server"""
         try:
             self.websocket = await websockets.connect(
                 "ws://localhost:" + str(self.port)
@@ -59,6 +61,7 @@ class vts:
             print("the API is running on ws://localhost:", str(self.port))
 
     async def close(self) -> None:
+        """close the websocket connection"""
         await self.websocket.close(code=1000, reason="user closed")
         self.__connection_status = 0
 
@@ -120,4 +123,5 @@ class vts:
         return self.__authentic_status
 
     def get_connection_status(self) -> int:
+        """get connection status"""
         return self.__connection_status

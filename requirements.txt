@@ -1,4 +1,4 @@
-aiofile
+aiofiles
 websockets
 pytest
 pytest-asyncio

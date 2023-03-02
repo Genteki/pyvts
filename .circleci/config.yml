@@ -3,8 +3,6 @@ jobs:
   build:
     docker:
       - image: python:3.9
-        ports:
-          - 8001:8001
     working_directory: ~/repo
     steps:
       - checkout
@@ -22,3 +20,4 @@ jobs:
             pytest
           background: true
           port: 8080
+          host: 0.0.0.0

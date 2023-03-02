@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: python:3.9
+      port:
+        - 8001:8001
     working_directory: ~/repo
     steps:
       - checkout

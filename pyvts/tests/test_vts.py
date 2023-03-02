@@ -5,7 +5,7 @@ from unittest.mock import patch, AsyncMock, MagicMock
 from .test_utils import FakeVtubeStudioAPIServer
 
 pytest_plugins = ("pytest_asyncio",)
-PORT = 8456
+PORT = 8001
 
 @pytest.fixture
 def myvts():

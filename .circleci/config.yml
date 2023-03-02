@@ -20,7 +20,6 @@ jobs:
             coverage run -m pytest
             coverage report
       - run:
-          name: Upload coverage report to Coveralls
+          name: Upload coverage report to Codecov
           command: |
-            pip install coveralls
-            coveralls --rcfile=.coveragerc
+            bash <(curl -s https://codecov.io/bash)

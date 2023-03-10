@@ -66,4 +66,6 @@ workflows:
       - build
       - lint
       - test
-    when: \<< (pipeline.event == "pull_request" || pipeline.event == "push") && pipeline.branch == "main" >>
+    when: |
+      (github.event_name == 'pull_request' || github.event_name == 'pull_request') &&
+      github.base_ref == 'main'

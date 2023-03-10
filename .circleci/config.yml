@@ -17,6 +17,7 @@ jobs:
       - run:
           name: Setup build
           command: |
+            source env/bin/activate
             python setup.py build
   
   lint:

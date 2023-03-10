@@ -57,6 +57,7 @@ jobs:
       - run:
           name: Upload coverage report to Codecov
           command: |
+            source env/bin/activate
             bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
 
 workflows:

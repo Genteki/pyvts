@@ -2,7 +2,17 @@ version: 2.1
 
 
 jobs:
-  static_analysis:
+  build:
+    docker:
+      - image: python:3.9
+      steps:
+        - run: python -m venv env
+        - run: source venv/bin/activate
+        - run: pip install --upgrade pip
+        - run: pip install -r requirements.txt
+        - run: python setup.py build
+  
+  lint:
     docker:
       - image: python:3.9
     steps:
@@ -17,7 +27,7 @@ jobs:
             pip install flake8
             flake8
 
-  build:
+  test:
     docker:
       - image: python:3.9
     working_directory: ~/repo
@@ -44,5 +54,9 @@ jobs:
 workflows:
   test_my_lib:
     jobs:
-      - static_analysis
       - build
+      - lint
+      - test:
+        requires:
+          - build
+    when: << pipeline.event == "pull_request" || pipeline.event == "push" && pipeline.branch == "main" >>

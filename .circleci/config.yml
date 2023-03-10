@@ -7,7 +7,7 @@ jobs:
       - image: python:3.9
     steps:
       - run: python -m venv env
-      - run: source venv/bin/activate
+      - run: source env/bin/activate
       - run: pip install --upgrade pip
       - run: pip install -r requirements.txt
       - run: python setup.py build

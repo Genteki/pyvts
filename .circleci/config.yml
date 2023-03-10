@@ -56,7 +56,5 @@ workflows:
     jobs:
       - build
       - lint
-      - test:
-        requires:
-          - build
+      - test
     when: << pipeline.event == "pull_request" || pipeline.event == "push" && pipeline.branch == "main" >>

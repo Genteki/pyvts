@@ -66,4 +66,4 @@ workflows:
       - build
       - lint
       - test
-    when: \<< pipeline.event == "pull_request" || pipeline.event == "push" && pipeline.branch == "main" \>>
+    when: \<< pipeline.event == "pull_request" || pipeline.event == "push" && pipeline.branch == "main" >>

@@ -6,11 +6,17 @@ jobs:
     docker:
       - image: python:3.9
     steps:
-      - run: python -m venv env
-      - run: source env/bin/activate
-      - run: pip install --upgrade pip
-      - run: pip install -r requirements.txt
-      - run: python setup.py build
+      - run: 
+        name: Install dependencies
+        command: |
+          python -m venv env
+          source env/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      - run:
+        name: build
+        command: |
+          python setup.py build
   
   lint:
     docker:

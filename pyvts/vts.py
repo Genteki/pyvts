@@ -1,4 +1,3 @@
-# pylint: disable=E1101
 """ main class """
 import json
 import websockets

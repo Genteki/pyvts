@@ -1,6 +1,6 @@
 # pyvts
-[![License: MIT](https://img.shields.io/github/license/Genteki/pyvts?style=flat-square)](https://opensource.org/licenses/MIT) [![issue](https://img.shields.io/github/issues/genteki/pyvts?style=flat-square)](https://github.com/Genteki/pyvts/issues) ![build](https://img.shields.io/circleci/build/github/Genteki/pyvts?style=flat-square)
-
+[![License: MIT](https://img.shields.io/github/license/Genteki/pyvts?style=flat-square)](https://opensource.org/licenses/MIT) [![issue](https://img.shields.io/github/issues/genteki/pyvts?style=flat-square)](https://github.com/Genteki/pyvts/issues) [![build](https://img.shields.io/circleci/build/github/Genteki/pyvts?style=flat-square)](https://circleci.com/gh/Genteki/pyvts)
+[![codecov](https://img.shields.io/codecov/c/github/Genteki/pyvts?style=flat-square&token=PP0TY1R27S)](https://codecov.io/gh/Genteki/pyvts)
 
 A python library for interacting with the [VTube Studio API](https://github.com/DenchiSoft/VTubeStudio).
 

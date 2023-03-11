@@ -1,4 +1,3 @@
-# pylint: disable=W0621
 """ unit test for vts.py """
 import pytest
 import pyvts

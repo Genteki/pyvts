@@ -61,9 +61,10 @@ jobs:
             bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
 
 workflows:
-  test_my_lib:
+  CI:
     jobs:
       - build
       - lint
-      - test
-    when: \<< pipeline.event == "pull_request" || pipeline.event == "push" && pipeline.branch == "main" \>>
+      - test:
+          requires:
+            - build      

@@ -1,4 +1,3 @@
-# pylint: disable=E1101
 """ utils for tests """
 import json
 import websockets

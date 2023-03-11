@@ -65,7 +65,6 @@ workflows:
     jobs:
       - build
       - lint
-      - test
-    when: |
-      (github.event_name == 'pull_request' || github.event_name == 'pull_request') &&
-      github.base_ref == 'main'
+      - test:
+          requires:
+            - build      

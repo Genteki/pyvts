@@ -1,10 +1,10 @@
 coverage:
   status:
-    project:
+    patch:
       default:
         # basic
-        target: 50%
-        threshold: 0%
+        target: 80%
+        threshold: 1%
         base: auto 
         flags: 
           - unit

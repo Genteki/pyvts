@@ -65,7 +65,9 @@ class VTSRequest:
     ) -> dict:
         """
         request to move the model
-            x, y: location of model, [0, 0] position the middle of the model in the middle of the screen(or itself if relative=True)
+            x, y: location of model,
+                if relative == False:  [0, 0] means the middle of the model in the middle of the screen
+                else if relative == True: [0, 0] means location of model center point
             rot: rotation, range [-360, 360]
             size: zoom in/out
             relative: the values are (not) considered to be relative to the current model position

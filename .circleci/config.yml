@@ -58,7 +58,7 @@ jobs:
           name: Upload coverage report to Codecov
           command: |
             source env/bin/activate
-            export CODECOV_CONFIG=./config/codecov.yml
+            export CODECOV_CONFIG=.codecov.yml
             bash <(curl -s https://codecov.io/bash) -e $CODECOV_CONFIG
 
 workflows:

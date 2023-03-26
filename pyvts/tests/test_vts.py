@@ -74,6 +74,7 @@ async def test_vts_authenticate(myvts: pyvts.vts):
     await myvts.close()
     await fake_server.stop()
 
+
 @pytest.mark.asyncio
 async def test_vts_custon_parameter(myvts: pyvts.vts):
     """test vts functions about custom parameters"""
@@ -98,15 +99,14 @@ async def test_vts_custon_parameter(myvts: pyvts.vts):
     )
     assert custom_param_value["data"]["value"] == 0.5
     # delete parameter
-    await myvts.request(
-        myvts.vts_request.requestDeleteCustomParameter(param_name)
-    )
+    await myvts.request(myvts.vts_request.requestDeleteCustomParameter(param_name))
     custom_param_value = await myvts.request(
         myvts.vts_request.requestParameterValue(param_name)
     )
     assert custom_param_value["data"]["errorID"] == 500
     await myvts.close()
     await fake_server.stop()
+
 
 @pytest.mark.asyncio
 async def test_vts_event_subscription(myvts: pyvts.vts):
@@ -116,9 +116,11 @@ async def test_vts_event_subscription(myvts: pyvts.vts):
     await myvts.connect()
     # send subscribe request
     subscribe_msg = myvts.vts_request.eventSubscriptionTest()
-    event_name = subscribe_msg["data"]["eventName"]
     return_msg = await myvts.request(subscribe_msg)
-    assert return_msg["data"]["yourTestMessage"] == subscribe_msg["data"]["config"]["testMessageForEvent"]
+    assert (
+        return_msg["data"]["yourTestMessage"]
+        == subscribe_msg["data"]["config"]["testMessageForEvent"]
+    )
     # end the test
     await myvts.close()
     await fake_server.stop()

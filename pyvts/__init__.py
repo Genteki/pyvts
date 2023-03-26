@@ -4,7 +4,7 @@ A python library for interacting with the VTube Studio API
 
 """
 
-__version__ = "alpha"
+__version__ = "0.1.0"
 __all__ = ["vts", "vts_request", "config", "error"]
 
 from .vts import vts

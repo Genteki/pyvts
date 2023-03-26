@@ -8,13 +8,20 @@ flag_management:
       - type: patch
         target: 80%
 
-coverage:
+coverage:  
   status:
+    project:
+      default:
+        threshold: 75%
+        paths:
+          - "pyvts"
+        branches:
+          - main
     patch:
       default:
         # basic
         target: 80%
-        threshold: 0%
+        threshold: 50%
         base: auto 
         flags: 
           - unit

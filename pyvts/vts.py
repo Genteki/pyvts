@@ -2,7 +2,7 @@
 import json
 import websockets
 import aiofiles
-from pyvts import vts_request, config, error
+from pyvts import vts_request, config
 
 
 class vts:
@@ -44,8 +44,6 @@ class vts:
         self.vts_request = vts_request.VTSRequest(
             developer=self.plugin_developer, plugin_name=self.plugin_name, **kwargs
         )
-        self.event_list = []
-        self.recv_histroy = []
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -56,8 +54,8 @@ class vts:
                 "ws://localhost:" + str(self.port)
             )
             self.__connection_status = 1
-        except error.ConnectionError as e:
-            print("Error: ", e)
+        except websockets.exceptions.WebSocketException:
+            print("connection failed")
             print("Please ensure VTubeStudio is running and")
             print("the API is running on ws://localhost:", str(self.port))
 
@@ -108,7 +106,7 @@ class vts:
         return self.authentic_token
 
     async def write_token(self) -> None:
-        """write authentic token into localfile"""
+        """write authentic token"""
         try:
             assert (
                 self.authentic_token is not None
@@ -126,8 +124,3 @@ class vts:
     def get_connection_status(self) -> int:
         """get connection status"""
         return self.__connection_status
-
-    async def event_subscribe(self, msg: dict) -> dict:
-        """subscribe event from vts api"""
-        # set up lisening action
-        return await self.request(msg)

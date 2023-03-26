@@ -73,3 +73,54 @@ async def test_vts_authenticate(myvts: pyvts.vts):
 
     await myvts.close()
     await fake_server.stop()
+
+
+@pytest.mark.asyncio
+async def test_vts_custon_parameter(myvts: pyvts.vts):
+    """test vts functions about custom parameters"""
+    fake_server = FakeVtubeStudioAPIServer()
+    await fake_server.start(port=PORT)
+    await myvts.connect()
+    param_name = "test"
+    # create custom parameter
+    await myvts.request(
+        myvts.vts_request.requestCustomParameter(param_name, default_value=0)
+    )
+    custom_param_value = await myvts.request(
+        myvts.vts_request.requestParameterValue(param_name)
+    )
+    assert custom_param_value["data"]["value"] == 0
+    # set value for this parameter
+    await myvts.request(
+        myvts.vts_request.requestSetParameterValue(parameter=param_name, value=0.5)
+    )
+    custom_param_value = await myvts.request(
+        myvts.vts_request.requestParameterValue(param_name)
+    )
+    assert custom_param_value["data"]["value"] == 0.5
+    # delete parameter
+    await myvts.request(myvts.vts_request.requestDeleteCustomParameter(param_name))
+    custom_param_value = await myvts.request(
+        myvts.vts_request.requestParameterValue(param_name)
+    )
+    assert custom_param_value["data"]["errorID"] == 500
+    await myvts.close()
+    await fake_server.stop()
+
+
+@pytest.mark.asyncio
+async def test_vts_event_subscription(myvts: pyvts.vts):
+    """test vts functions about event subscribe"""
+    fake_server = FakeVtubeStudioAPIServer()
+    await fake_server.start(port=PORT)
+    await myvts.connect()
+    # send subscribe request
+    subscribe_msg = myvts.vts_request.eventSubscriptionTest()
+    return_msg = await myvts.request(subscribe_msg)
+    assert (
+        return_msg["data"]["yourTestMessage"]
+        == subscribe_msg["data"]["config"]["testMessageForEvent"]
+    )
+    # end the test
+    await myvts.close()
+    await fake_server.stop()

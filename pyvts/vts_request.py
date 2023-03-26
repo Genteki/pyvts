@@ -142,7 +142,7 @@ class VTSRequest:
 
     def requestDeleteCustomParameter(self, parameter):
         data = {"parameterName": parameter}
-        self.BaseRequest("ParameterDeletionRequest", data=data)
+        return self.BaseRequest("ParameterDeletionRequest", data=data)
 
     def eventSubscription(
         self, event_name: str, on: bool = True, cfg: dict = {"0": 0}

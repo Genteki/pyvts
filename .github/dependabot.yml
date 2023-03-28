@@ -6,10 +6,9 @@
 version: 2
 updates:
   - package-ecosystem: "pip"
-    directory: "/pyvts"
+    directory: "/"
     schedule:
       interval: "weekly"
-    automerge: true
     labels:
       - "dependencies"
     assignees:

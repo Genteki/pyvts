@@ -9,5 +9,8 @@ updates:
     directory: "/pyvts"
     schedule:
       interval: "weekly"
-    assignees: 
+    automerge: true
+    labels:
+      - "dependencies"
+    assignees:
       - "dependabot[bot]"

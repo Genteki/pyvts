@@ -5,12 +5,11 @@
 
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
-  
-  - package-ecosystem: "pip"
-    directory: "/pyvts"
-    schedule:
-      interval: "weekly"
+    labels:
+      - "dependencies"
+    assignees:
+      - "dependabot[bot]"

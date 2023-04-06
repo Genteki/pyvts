@@ -10,19 +10,51 @@ Create a class `VTS` connecting to the server running on VTubeStudio (default po
 
 Implement functions in `VTS` to send/receive text messages to/from the server, to achieve developers' goals. For example, adding new tracking parameters to enable more actions on live2d avatars.
 
-## Installation
-
-> pip3 install pyvts
-
 ## Quick Start
+
+### Installation
+
+```
+pip3 install pyvts 
+```
+
+### Get Started
+
+First specify your plugin information
+```
+plugin_info = {
+    "plugin_name": "[plugin name]",
+    "developer": "[your name]",
+    "authentication_token_path": "./token.txt",
+}
+```
+Then create an instance and do whateveer you want!
+```
+async def main():
+    vts = pyvts.vts(plugin_info=plugin_info)
+    await vts.connect()
+    # Implement what you want to do
+    await vts.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+
+### Demo
+
 Demo [examples/start.py](./examples/start.py) is a good startpoint to make plugin for VTubeStudio. 
 
-Before you get started, make sure you've installed all the dependcies
+Before you get started, make sure you've clone the library and installed all the dependcies
 
-> pip3 install -r requirements.txt
+```
+pip3 install -r requirements.txt 
+```
 
 Then, launch `VTubeStudio`, and run
 
-> python3 examples/start.py
+``` 
+python3 examples/start.py 
+```
 
 in command line. You will see a new tracking parameter "start_parameter" added to VTubeStudio and some information about it in command line ouput.

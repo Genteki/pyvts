@@ -6,7 +6,7 @@ from pyvts import vts_request, config, error
 
 
 class vts:
-    """VtubeStudio Connector"""
+    """ ``VtubeStudio API`` Connector """
 
     def __init__(
         self,
@@ -15,17 +15,26 @@ class vts:
         **kwargs
     ) -> None:
         """
-        plugin_info: {
-            "plugin_name": your plugin name (str),
-            "developer": your name (str),
-            "icon": (optional) your icon if exist (img),
-            "authentication_token_path": str
-        }
-        vts_api_info: {
-            "version": str,
-            "name": str,
-            "port": int
-        }
+        Parameters
+        ----------
+        plugin_info : dict
+            {
+                "plugin_name": str,
+                "developer": str,
+                "icon": (optional) str,
+                "authentication_token_path": str
+            }
+        vts_api_info: dict 
+            {
+                "version": str,
+                "name": str,
+                "port": int
+            }
+
+        Returns
+        -------
+        pyvts.vts
+            ``VtubeStudio API`` connector
         """
         self.port = vts_api_info["port"]
         self.websocket = None
@@ -50,7 +59,7 @@ class vts:
             setattr(self, key, value)
 
     async def connect(self):
-        """connect to VtubeStudio API server"""
+        """ connect to VtubeStudio API server """
         try:
             self.websocket = await websockets.connect(
                 "ws://localhost:" + str(self.port)
@@ -69,7 +78,16 @@ class vts:
     async def request(self, request_msg: dict) -> dict:
         """
         send request to VTubeStudio
-        request_msg: message generated from VTSRequest (dict)
+
+        Parameters
+        ----------
+        request_msg : dict
+            message generated from ``VTSRequest``
+
+        Returns
+        -------
+        dict
+            message from VTubeStudio API, data is stored in ``return_dict["data"]``
         """
         await self.websocket.send(json.dumps(request_msg))
         response_msg = await self.websocket.recv()
@@ -89,7 +107,18 @@ class vts:
             print("authentication failed")
 
     async def request_authenticate(self) -> bool:
-        """get authenticated from vtubestudio to have more access"""
+        """
+        get authenticated from vtubestudio to have more access
+        
+        Parameters
+        ----------
+        None
+
+        Returns
+        --------
+        bools
+            true - authentication succeed, fale - authentication failed
+        """
         require_msg = self.vts_request.authentication(self.authentic_token)
         responese_dict = await self.request(require_msg)
         try:
@@ -120,14 +149,40 @@ class vts:
             print("write authentic token files failed")
 
     def get_authentic_status(self) -> int:
-        """get authentic status"""
+        """
+        get authentic status
+        
+        Returns
+        --------
+        int
+            authentic status,  0 - no authen & token, 1 - has token, 2 - authen, -1 - wrong token
+        """
         return self.__authentic_status
 
     def get_connection_status(self) -> int:
-        """get connection status"""
+        """
+        get connection status
+        
+        Returns
+        --------
+        int
+            connection status, 0: not connected, 1: connected
+        """
         return self.__connection_status
 
     async def event_subscribe(self, msg: dict) -> dict:
-        """subscribe event from vts api"""
+        """
+        subscribe event from vts api
+        
+        Parameters
+        -----------
+        msg : dict
+            event subscription message generated from method of `VTSRequest`
+
+        Returns
+        -------
+        dict
+            message returned from VTube Studio API
+        """
         # set up lisening action
         return await self.request(msg)

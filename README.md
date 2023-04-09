@@ -6,9 +6,9 @@
 A python library for interacting with the [VTube Studio API](https://github.com/DenchiSoft/VTubeStudio).
 
 ## Overview
-Create a class `VTS` connecting to the server running on VTubeStudio (default port: `ws://localhost:8001`).
+`pyvts` is a python library for interacting with the [VTube Studio API](https://github.com/DenchiSoft/VTubeStudio).
 
-Implement functions in `VTS` to send/receive text messages to/from the server, to achieve developers' goals. For example, adding new tracking parameters to enable more actions on live2d avatars.
+You can easily use the library to develop VTubeStudio Plugin to achieve your goals. For example, adding new tracking parameters to enable more actions on live2d avatars.
 
 ## Quick Start
 
@@ -20,7 +20,13 @@ pip3 install pyvts
 
 ### Get Started
 
-First specify your plugin information
+First import library you need,
+```
+import pyvts
+import asyncio
+```
+
+Then specify your plugin information
 ```
 plugin_info = {
     "plugin_name": "[plugin name]",
@@ -28,7 +34,7 @@ plugin_info = {
     "authentication_token_path": "./token.txt",
 }
 ```
-Then create an instance and do whateveer you want!
+Create an instance and do whateveer you want!
 ```
 async def main():
     vts = pyvts.vts(plugin_info=plugin_info)

@@ -29,6 +29,6 @@ setup(
     author_email="zhangkaiyuan.null@gmail.com",
     url="https://github.com/Genteki/pyvts",
     license="MIT",
-    packages=find_packages(where="pyvts", exclude=["*.tests", "*.tests.*", "tests.*"]),
+    packages=find_packages(where="pyvts", exclude=["tests.*", "tests"]),
     install_requires=["websockets", "aiofile"],
 )

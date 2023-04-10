@@ -26,7 +26,7 @@ class VTSRequest:
         **kwargs
             other parameters like ``api_version``, ``api_version``,
             not needed in most cases
-        
+
         Returns:
             pyvts.VTSRequest
                 request generator
@@ -44,7 +44,7 @@ class VTSRequest:
     ) -> dict:
         """
         Standard Request
-        
+
         Parameters
         ----------
         message_type : str
@@ -53,7 +53,7 @@ class VTSRequest:
             optional, relavent data sending to ``VTubeStudio API``
         request_id : str
             string to mark the request, not important
-                
+
         Returns
         -------
         dict of {"apiName: str, "apiVersion": str, "requestID": str, "messageType: str, "data": dict}
@@ -72,12 +72,12 @@ class VTSRequest:
     def authentication_token(self) -> dict:
         """
         generate request msg to requirer authentication_token
-        
+
         Returns
         ------
         dict
             the organized message sending to ``Vtubestudio API``
-        
+
         Examples
         ---------
         >>> message = myvts.vts_request.authentication_token()
@@ -101,7 +101,7 @@ class VTSRequest:
         ----------
         token : str
             authenication token
-        
+
         Returns
         -------
         dict
@@ -127,7 +127,7 @@ class VTSRequest:
                 location of model,
                 if relative == False:  [0, 0] means the middle of the model in the middle of the screen
                 else if relative == True: [0, 0] means location of model center point
-            rot : float 
+            rot : float
                 rotation angle, range [-360, 360]
             size : float
                 zoom ratio, default: 1
@@ -176,7 +176,7 @@ class VTSRequest:
         -----------
         parameter : str
             name of parameter
-        min : float 
+        min : float
             minimum bound for the parameter
         max : float
             maximum bound for the parameter
@@ -188,7 +188,7 @@ class VTSRequest:
         Returns
         -------
         dict
-            the organized message sending to ``Vtubestudio API``        
+            the organized message sending to ``Vtubestudio API``
         """
         data = {
             "parameterName": parameter,
@@ -226,7 +226,7 @@ class VTSRequest:
         Returns
         -------
         dict
-            the organized message sending to ``Vtubestudio API``        
+            the organized message sending to ``Vtubestudio API``
         """
         data = {
             "faceFound": face_found,
@@ -247,7 +247,7 @@ class VTSRequest:
 
         Parameters
         ----------
-        event_name : string 
+        event_name : string
             event name you want to substribe
         on : bool
             turn on or turn off

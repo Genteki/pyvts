@@ -6,7 +6,7 @@ from pyvts import vts_request, config, error
 
 
 class vts:
-    """ ``VtubeStudio API`` Connector """
+    """``VtubeStudio API`` Connector"""
 
     def __init__(
         self,
@@ -24,7 +24,7 @@ class vts:
                 "icon": (optional) str,
                 "authentication_token_path": str
             }
-        vts_api_info: dict 
+        vts_api_info: dict
             {
                 "version": str,
                 "name": str,
@@ -59,7 +59,7 @@ class vts:
             setattr(self, key, value)
 
     async def connect(self):
-        """ connect to VtubeStudio API server """
+        """connect to VtubeStudio API server"""
         try:
             self.websocket = await websockets.connect(
                 "ws://localhost:" + str(self.port)
@@ -109,7 +109,7 @@ class vts:
     async def request_authenticate(self) -> bool:
         """
         get authenticated from vtubestudio to have more access
-        
+
         Parameters
         ----------
         None
@@ -151,7 +151,7 @@ class vts:
     def get_authentic_status(self) -> int:
         """
         get authentic status
-        
+
         Returns
         --------
         int
@@ -162,7 +162,7 @@ class vts:
     def get_connection_status(self) -> int:
         """
         get connection status
-        
+
         Returns
         --------
         int
@@ -173,7 +173,7 @@ class vts:
     async def event_subscribe(self, msg: dict) -> dict:
         """
         subscribe event from vts api
-        
+
         Parameters
         -----------
         msg : dict

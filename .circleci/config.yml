@@ -69,9 +69,12 @@ jobs:
       - checkout:
           path: ~/pyvts
       - run:
-          name: Install dependencies
+          name: check directory
           command: |
             ls
+      - run:
+          name: Install dependencies
+          command: |
             pip install -r requirements.txt
       - run:
           name: Build docs

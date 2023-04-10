@@ -65,6 +65,9 @@ jobs:
     docker:
       - image: python:3.9
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "ac:7c:0f:db:3b:f3:1f:69:5a:e8:07:bd:3a:ab:72:88"
       - checkout
       - run:
           name: Install dependencies

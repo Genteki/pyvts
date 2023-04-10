@@ -64,10 +64,9 @@ jobs:
   build_doc:
     docker:
       - image: python:3.9
-    working_directory: ~/pyvys/docs
     steps:
       - checkout:
-          path: ~/pyvts
+          working_directory: ~/pyvys/docs
       - run:
           name: check directory
           command: |

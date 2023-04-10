@@ -64,13 +64,12 @@ jobs:
   build_doc:
     docker:
       - image: python:3.9
-    working_directory: ~/repo
+    working_directory: ~/repo/docs/
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
-            cd docs/
             pip install -r requirements.txt
       - run:
           name: Build docs

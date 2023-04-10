@@ -98,7 +98,7 @@ workflows:
       - build
       - lint
       - test
-      - build_doc
+      - build_doc:
           requires:
             - build
             - test

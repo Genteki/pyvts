@@ -1,53 +1,31 @@
-# pyvts
+# Welcome to pyvts !
+
+[![License: MIT](https://img.shields.io/github/license/Genteki/pyvts?style=flat-square)](https://opensource.org/licenses/MIT) [![issue](https://img.shields.io/github/issues/genteki/pyvts?style=flat-square)](https://github.com/Genteki/pyvts/issues) [![build](https://img.shields.io/circleci/build/github/Genteki/pyvts?style=flat-square)](https://circleci.com/gh/Genteki/pyvts)
+[![codecov](https://img.shields.io/codecov/c/github/genteki/pyvts?color=informational&style=flat-square)](https://codecov.io/gh/Genteki/pyvts)
+[![PyPI](https://img.shields.io/pypi/v/pyvts?style=flat-square)](https://pypi.org/project/pyvts/)
+
 ## Overview
 `pyvts` is a python library for interacting with the [VTube Studio API](https://github.com/DenchiSoft/VTubeStudio).
 
 You can easily use the library to develop VTubeStudio Plugin to achieve your goals. For example, adding new tracking parameters to enable more actions on live2d avatars.
 
-## Quick Start
-
-### Installation
+## Installation
 
 ```
 pip3 install pyvts 
 ```
 
-### Get Started
+```{toctree} 
+   :hidden: true
+   :depth: 1
 
-First import library you need,
-```
-import pyvts
-import asyncio
-```
-
-Then specify your plugin information
-```
-plugin_info = {
-    "plugin_name": "[plugin name]",
-    "developer": "[your name]",
-    "authentication_token_path": "./token.txt",
-}
-```
-Create an instance and do whateveer you want!
-```
-async def main():
-    vts = pyvts.vts(plugin_info=plugin_info)
-    await vts.connect()
-    # Implement what you want to do
-    await vts.close()
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
-
-
-```eval_rst
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Package Contents:
-
-   README.md
-   CONTRIBUTING.md
-   pyvts.rst
+README.md
+   :caption: Introduction to pyvts
+   :end-before: Demo
+   :heading-offset: 3
+reference.rst
+   :caption: API reference 
+   :depth: 1
+CONTRIBUTING.md
+   :caption: Contributing
 ```

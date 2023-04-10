@@ -7,15 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import os, sys
 import sphinx_rtd_theme
-from recommonmark.transform import AutoStructify
 sys.path.insert(0, os.path.abspath(".."))
 import pyvts
-
-def setup(app):
-    app.add_config_value('recommonmark_config', {
-        'auto_toc_tree_section': 'Contents',
-    }, True)
-    app.add_transform(AutoStructify)
 
 project = 'pyvts'
 copyright = '2023, Genteki'
@@ -25,10 +18,24 @@ release = pyvts.__version__
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['recommonmark', 'sphinx.ext.autodoc', 'sphinx.ext.napoleon']
-source_suffix = ['.rst', '.md']
+extensions = [
+    'myst_parser',
+    'sphinx.ext.autodoc',
+    'sphinx_autodoc_typehints',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.autosummary',
+]
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '*/tests/*', 'tests/*']
+autodoc_typehints = 'description'
+
+html_theme_options = {
+    'navigation_depth': 3,
+}
 
 language = 'English'
 

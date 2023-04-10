@@ -70,7 +70,8 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            pip install -r ~/project/requirements.txt
+            ls
+            pip install -r ../requirements.txt
             pip install -r requirements.txt
       - run:
           name: Build docs

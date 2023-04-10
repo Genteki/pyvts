@@ -64,7 +64,7 @@ jobs:
   build_doc:
     docker:
       - image: python:3.9
-    working_directory: ~/pyvts/docs
+    working_directory: ~/docs
     steps:
       - checkout:
           path: ~/pyvts/docs

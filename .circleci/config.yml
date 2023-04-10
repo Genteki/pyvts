@@ -64,19 +64,17 @@ jobs:
   build_doc:
     docker:
       - image: python:3.9
+    working_directory: ~/project/docs
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
+            pip install -r ~/project/requirements.txt
             pip install -r requirements.txt
-            cd docs
-            pip install -r requirements.txt
-            ls ~/project
       - run:
           name: Build docs
           command: |
-            cd docs
             sphinx-build -b html . ./_build
       - store_artifacts:
           path: ~/project/docs/_build/html

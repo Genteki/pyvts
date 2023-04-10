@@ -48,7 +48,6 @@ jobs:
             source env/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
-            ls ~
       - run:
           name: Run tests
           command: |
@@ -79,7 +78,7 @@ jobs:
             cd docs
             sphinx-build -b html . ./_build
       - store_artifacts:
-          path: ~/project/docs/_build/html
+          path: ~/pyvts/docs/_build/html
       - run:
           name: deploy
           command: |
@@ -90,7 +89,7 @@ jobs:
             cd deploy
             git checkout --orphan gh-pages
             git rm -rf .
-            cp -r ~/project/docs/_build/html/* .
+            cp -r ~/pyvts/docs/_build/html/* .
             touch .nojekyll
             git add -A
             git commit -m "Update documentation"

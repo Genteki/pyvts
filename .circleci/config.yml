@@ -92,7 +92,7 @@ jobs:
             cd deploy
             git checkout --orphan gh-pages
             git rm -rf .
-            cp -r /root/project/docs/_build/html .
+            cp -r /root/project/docs/_build/html/* .
             touch .nojekyll
             git add -A
             git commit -m "Update documentation"

@@ -2,3 +2,8 @@ myst_parser
 sphinx
 sphinx_rtd_theme
 sphinx_autodoc_typehints
+aiofiles
+websockets
+pytest
+pytest-asyncio
+coverage

@@ -60,6 +60,37 @@ jobs:
             source env/bin/activate
             export CODECOV_CONFIG=codecov.yml
             bash <(curl -s https://codecov.io/bash)
+  
+  build_doc:
+    docker:
+      - image: python:3.9
+      working_directory: ~/repo/docs
+      steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            pip install -r requirements.txt
+      - run:
+          name: Build docs
+          command: |
+            make html
+      - store_artifacts:
+          path: ~/repo/docs/_build/html
+      - run:
+          name: deploy
+          command: |
+            git config --global user.email "zhangkaiyuan.null@gmail.com"
+            git config --global user.name "Genteki"
+            git clone https://github.com/genteki/pyvts.git deploy
+            cd deploy
+            git checkout --orphan gh-pages
+            git rm -rf .
+            cp -r ~/repo/docs/_build/html/* .
+            touch .nojekyll
+            git add -A
+            git commit -m "Update documentation"
+            git push --force --quiet origin gh-pages
 
 workflows:
   CI:
@@ -67,5 +98,7 @@ workflows:
       - build
       - lint
       - test:
+      - build_doc
           requires:
-            - build      
+            - build
+            - test

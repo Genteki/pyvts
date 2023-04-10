@@ -8,4 +8,4 @@ __version__ = "0.1.1"
 __all__ = ["vts", "vts_request", "config", "error"]
 
 from .vts import vts
-from .vts_request import VTSRequest
+from .vts_request import VTSRequest  # noqa: F401

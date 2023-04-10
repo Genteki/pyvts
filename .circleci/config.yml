@@ -65,18 +65,20 @@ jobs:
     docker:
       - image: python:3.9
     steps:
-      - checkout:
-          working_directory: ~/pyvys/docs
+      - checkout
       - run:
           name: check directory
+          working_directory: ~/pyvys/docs
           command: |
             ls
       - run:
           name: Install dependencies
+          working_directory: ~/pyvys/docs
           command: |
             pip install -r requirements.txt
       - run:
           name: Build docs
+          working_directory: ~/pyvys/docs
           command: |
             sphinx-build -b html . ./_build
       - store_artifacts:

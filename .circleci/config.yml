@@ -67,19 +67,15 @@ jobs:
     steps:
       - checkout
       - run:
-          name: check directory
-          working_directory: ~/pyvts/docs
-          command: |
-            ls
-      - run:
           name: Install dependencies
-          working_directory: ~/pyvts/docs
           command: |
+            cd docs
             pip install -r requirements.txt
+            ls ~/
       - run:
           name: Build docs
-          working_directory: ~/pyvts/docs
           command: |
+            cd docs
             sphinx-build -b html . ./_build
       - store_artifacts:
           path: ~/pyvts/docs/_build/html

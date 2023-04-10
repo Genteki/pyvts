@@ -64,9 +64,10 @@ jobs:
   build_doc:
     docker:
       - image: python:3.9
-    working_directory: ~/docs
+    working_directory: ~/pyvys/docs
     steps:
-      - checkout
+      - checkout:
+          path: ~/pyvts
       - run:
           name: Install dependencies
           command: |

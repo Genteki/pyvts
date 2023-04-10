@@ -78,8 +78,8 @@ jobs:
             cd docs
             make html
       - store_artifacts:
-          path: /root/project/pyvts/docs/_build/html
-          destination: /root/project/tmp
+          path: /root/project/docs/_build/html
+          destination: /root/tmp
       - run:
           name: deploy
           command: |
@@ -90,7 +90,7 @@ jobs:
             cd deploy
             git checkout --orphan gh-pages
             git rm -rf .
-            cp -r /root/project/tmp .
+            cp -r /root/tmp .
             touch .nojekyll
             git add -A
             git commit -m "Update documentation"

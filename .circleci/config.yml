@@ -64,10 +64,9 @@ jobs:
   build_doc:
     docker:
       - image: python:3.9
-    working_directory: ~/repo/
+    working_directory: ~/pyvts/docs
     steps:
-      - checkout:
-          - run: cd docs
+      - checkout
       - run:
           name: Install dependencies
           command: |

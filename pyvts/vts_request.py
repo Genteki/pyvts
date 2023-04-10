@@ -10,10 +10,27 @@ class VTSRequest:
 
     def __init__(
         self,
-        developer: dict = config.plugin_default["developer"],
-        plugin_name: dict = config.plugin_default["plugin_name"],
+        developer: str = config.plugin_default["developer"],
+        plugin_name: str = config.plugin_default["plugin_name"],
         **kwargs
-    ) -> None:
+    ):
+        """
+        VtubeStudio API Request Generator
+
+        Parameters
+        ----------
+        developer : str
+            developer the your plugin
+        plugin_name : dict
+            plugin name
+        **kwargs
+            other parameters like ``api_version``, ``api_version``,
+            not needed in most cases
+
+        Returns:
+            pyvts.VTSRequest
+                request generator
+        """
         self.developer = developer
         self.plugin_name = plugin_name
         self.api_version = API_VERSION
@@ -25,7 +42,24 @@ class VTSRequest:
     def BaseRequest(
         self, message_type: str, data: dict = None, request_id: str = "SomeID"
     ) -> dict:
-        """Standard Request"""
+        """
+        Standard Request
+
+        Parameters
+        ----------
+        message_type : str
+            Message type of request
+        data : dict
+            optional, relavent data sending to ``VTubeStudio API``
+        request_id : str
+            string to mark the request, not important
+
+        Returns
+        -------
+        dict of {"apiName: str, "apiVersion": str, "requestID": str, "messageType: str, "data": dict}
+            the organized message sending to ``Vtubestudio API``
+        """
+
         msg = {
             "apiName": self.api_name,
             "apiVersion": self.api_version,
@@ -36,7 +70,19 @@ class VTSRequest:
         return msg
 
     def authentication_token(self) -> dict:
-        """generate request msg to requirer authentication_token"""
+        """
+        generate request msg to requirer authentication_token
+
+        Returns
+        ------
+        dict
+            the organized message sending to ``Vtubestudio API``
+
+        Examples
+        ---------
+        >>> message = myvts.vts_request.authentication_token()
+        >>> return_msg = await myvts.request(message)
+        """
         # Plugin icons should be 128x128 pixel Base64-encoded PNGs.
         msg_type = "AuthenticationTokenRequest"
         data = {
@@ -50,7 +96,16 @@ class VTSRequest:
     def authentication(self, token) -> dict:
         """
         use auth_token to get more access
-        token: authenication token (str)
+
+        Parameters
+        ----------
+        token : str
+            authenication token
+
+        Returns
+        -------
+        dict
+            the organized message sending to ``Vtubestudio API``
         """
         msg_type = "AuthenticationRequest"
         data = {
@@ -65,12 +120,26 @@ class VTSRequest:
     ) -> dict:
         """
         request to move the model
-            x, y: location of model,
+
+        Parameters
+        -----------
+            x, y : float
+                location of model,
                 if relative == False:  [0, 0] means the middle of the model in the middle of the screen
                 else if relative == True: [0, 0] means location of model center point
-            rot: rotation, range [-360, 360]
-            size: zoom in/out
-            relative: the values are (not) considered to be relative to the current model position
+            rot : float
+                rotation angle, range [-360, 360]
+            size : float
+                zoom ratio, default: 1
+            relative : bool
+                whether the values are considered to be relative to the current model position
+            move_time : float
+                time of the move motion
+
+        Returns
+        -------
+        dict of {data: dict}
+            the organized message sending to ``Vtubestudio API``
         """
         msg_type = "MoveModelRequest"
         data = {
@@ -87,7 +156,7 @@ class VTSRequest:
         return self.BaseRequest("HotkeysInCurrentModelRequest")
 
     def requestTriggerHotKey(self, hotkeyID):
-        # TODO
+        """TODO"""
         pass
 
     def requestTrackingParameterList(self) -> dict:
@@ -102,11 +171,24 @@ class VTSRequest:
     ) -> dict:
         """
         Add your own new tracking parameters and use them in your VTube Studio models
-        parameter: parameter name (str)
-        min: minimum bound for the parameter (float)
-        max: maximum bound for the parameter (float)
-        default_value: default value (float)
-        info: description (str)
+
+        Parameters
+        -----------
+        parameter : str
+            name of parameter
+        min : float
+            minimum bound for the parameter
+        max : float
+            maximum bound for the parameter
+        default_value : float
+            default value
+        info : str
+            description of this parameter
+
+        Returns
+        -------
+        dict
+            the organized message sending to ``Vtubestudio API``
         """
         data = {
             "parameterName": parameter,
@@ -127,11 +209,24 @@ class VTSRequest:
     ) -> dict:
         """
         Set value for any default or custom parameter.
-        parameter: name of the parameter (str)
-        value: value of the data from -1000000 to 1000000 (float)
-        weight: you can mix the your value with vts face tracking parameter, from 0 to 1 (float)
-        face_found: if true, you will tell VTubeStudio to consider the user face as found,
+
+        Parameters
+        ----------
+        parameter : str
+            name of the parameter
+        value : float
+            value of the data from -1000000 to 1000000
+        weight : float
+            you can mix the your value with vts face tracking parameter, from 0 to 1,
+            defualt(no mixture): 1
+        face_found : bool
+            if true, you will tell VTubeStudio to consider the user face as found,
             s.t. you can control when the "tracking lost"
+
+        Returns
+        -------
+        dict
+            the organized message sending to ``Vtubestudio API``
         """
         data = {
             "faceFound": face_found,
@@ -148,10 +243,16 @@ class VTSRequest:
         self, event_name: str, on: bool = True, cfg: dict = {"0": 0}
     ) -> dict:
         """
-        subscribe event from vtubestudio api
-        event_name: event name you want to substribe (str)
-        on: turn on or turn off (bool)
-        cfg: config message (dict, optional)
+        subscribe event from vtubestudio api (base function, seldom directly used)
+
+        Parameters
+        ----------
+        event_name : string
+            event name you want to substribe
+        on : bool
+            turn on or turn off
+        cfg : dict
+            optional, config message
         """
         msg_type = "EventSubscriptionRequest"
         data = {"eventName": event_name, "subscribe": on, "config": cfg}

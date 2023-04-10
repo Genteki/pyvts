@@ -76,7 +76,7 @@ jobs:
           name: Build docs
           command: |
             cd docs
-            sphinx-build -b html . ./_build
+            make html
       - store_artifacts:
           path: ~/pyvts/docs/_build/html
           destination: ~/tmp

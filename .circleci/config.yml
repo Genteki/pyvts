@@ -68,21 +68,21 @@ jobs:
       - checkout
       - run:
           name: check directory
-          working_directory: ~/pyvys/docs
+          working_directory: ~/pyvts/docs
           command: |
             ls
       - run:
           name: Install dependencies
-          working_directory: ~/pyvys/docs
+          working_directory: ~/pyvts/docs
           command: |
             pip install -r requirements.txt
       - run:
           name: Build docs
-          working_directory: ~/pyvys/docs
+          working_directory: ~/pyvts/docs
           command: |
             sphinx-build -b html . ./_build
       - store_artifacts:
-          path: ~/repo/docs/_build/html
+          path: ~/pyvts/docs/_build/html
       - run:
           name: deploy
           command: |

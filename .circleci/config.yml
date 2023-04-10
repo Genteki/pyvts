@@ -79,6 +79,7 @@ jobs:
             sphinx-build -b html . ./_build
       - store_artifacts:
           path: ~/pyvts/docs/_build/html
+          destination: ~/tmp
       - run:
           name: deploy
           command: |
@@ -89,7 +90,7 @@ jobs:
             cd deploy
             git checkout --orphan gh-pages
             git rm -rf .
-            cp -r ~/pyvts/docs/_build/html/* .
+            cp -r ~/tmp .
             touch .nojekyll
             git add -A
             git commit -m "Update documentation"

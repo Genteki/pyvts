@@ -64,8 +64,8 @@ jobs:
   build_doc:
     docker:
       - image: python:3.9
-      working_directory: ~/repo/docs
-      steps:
+    working_directory: ~/repo/docs
+    steps:
       - checkout
       - run:
           name: Install dependencies

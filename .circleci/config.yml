@@ -66,8 +66,7 @@ jobs:
       - image: python:3.9
     working_directory: ~/docs
     steps:
-      - checkout:
-          path: ~/pyvts/docs
+      - checkout
       - run:
           name: Install dependencies
           command: |

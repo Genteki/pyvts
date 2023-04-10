@@ -79,7 +79,6 @@ jobs:
             make html
       - store_artifacts:
           path: /root/project/docs/_build/html
-          destination: /root/tmp
       - run:
           name: deploy
           command: |
@@ -90,7 +89,7 @@ jobs:
             cd deploy
             git checkout --orphan gh-pages
             git rm -rf .
-            cp -r /root/tmp .
+            cp -r /root/project/docs/_build/html .
             touch .nojekyll
             git add -A
             git commit -m "Update documentation"

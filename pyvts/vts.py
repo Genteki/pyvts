@@ -11,11 +11,11 @@ class vts:
 
     Args
     ----------
-    plugin_info : dict of \{"plugin_name", "developer", "icon", "authentication_token_path"\}
+    plugin_info : dict of {"plugin_name", "developer", "icon", "authentication_token_path"}
 
         Information about your plugin.
 
-    vts_api_info: dict of \{"version", "name", "port"\}
+    vts_api_info: dict of {"version", "name", "port"}
         Informatiopn about VtubeStudio API.
 
     **kwarg :

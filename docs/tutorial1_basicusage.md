@@ -48,7 +48,7 @@ After all, use `vts.close()` to disconnect from VTS and add `main` function to `
 
 After sucessfully connected, you will see in VTubeStudio settings
 
-![](./image/example_start_plugin_connected.png){width="800" height="600" style="display: block; margin: 0 auto" }
+![](./image/example_start_plugin_connected.png)
 
 In `vts.request_authenticate_token`, it will request a token from `Vtube Studio API`, and save it in local file. While requesting token, a dialog will show up in VTube Studio app. Then, `vts.request_authenticate` will use the token to get accessed.
 

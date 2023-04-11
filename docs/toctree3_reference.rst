@@ -11,7 +11,7 @@ pyvts.vts
    :show-inheritance:
 
 pyvts.VTSRequest
----------------
+-------------------
 .. autoclass:: pyvts.VTSRequest
    :members:
    :undoc-members:

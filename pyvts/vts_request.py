@@ -1,4 +1,4 @@
-""" test vts/vts_request.py """
+""" Generate vts request """
 from pyvts import config
 
 API_NAME = config.vts_api["name"]
@@ -6,7 +6,18 @@ API_VERSION = config.vts_api["version"]
 
 
 class VTSRequest:
-    """VtubeStudio API Request Generator"""
+    """
+    VtubeStudio API Request Generator
+
+    Args
+    ----------
+    developer : str
+        developer the your plugin
+    plugin_name : dict
+        plugin name
+    **kwargs : optional
+        other parameters like ``api_version``,
+    """
 
     def __init__(
         self,
@@ -15,21 +26,8 @@ class VTSRequest:
         **kwargs
     ):
         """
-        VtubeStudio API Request Generator
 
-        Parameters
-        ----------
-        developer : str
-            developer the your plugin
-        plugin_name : dict
-            plugin name
-        **kwargs
-            other parameters like ``api_version``, ``api_version``,
-            not needed in most cases
 
-        Returns:
-            pyvts.VTSRequest
-                request generator
         """
         self.developer = developer
         self.plugin_name = plugin_name
@@ -45,19 +43,18 @@ class VTSRequest:
         """
         Standard Request
 
-        Parameters
+        Args
         ----------
         message_type : str
             Message type of request
-        data : dict
-            optional, relavent data sending to ``VTubeStudio API``
-        request_id : str
-            string to mark the request, not important
+        data : dict, optional
+            Relavent data sending to ``VTubeStudio API``
+        request_id : str, optional
+            String to mark the request, not important
 
         Returns
         -------
-        dict of {"apiName: str, "apiVersion": str, "requestID": str, "messageType: str, "data": dict}
-            the organized message sending to ``Vtubestudio API``
+            Organized message sending to ``Vtubestudio API``
         """
 
         msg = {
@@ -74,8 +71,7 @@ class VTSRequest:
         generate request msg to requirer authentication_token
 
         Returns
-        ------
-        dict
+        -------
             the organized message sending to ``Vtubestudio API``
 
         Examples
@@ -97,14 +93,13 @@ class VTSRequest:
         """
         use auth_token to get more access
 
-        Parameters
+        Args
         ----------
         token : str
             authenication token
 
         Returns
         -------
-        dict
             the organized message sending to ``Vtubestudio API``
         """
         msg_type = "AuthenticationRequest"
@@ -121,25 +116,24 @@ class VTSRequest:
         """
         request to move the model
 
-        Parameters
+        Args
         -----------
-            x, y : float
-                location of model,
-                if relative == False:  [0, 0] means the middle of the model in the middle of the screen
-                else if relative == True: [0, 0] means location of model center point
-            rot : float
-                rotation angle, range [-360, 360]
-            size : float
-                zoom ratio, default: 1
-            relative : bool
-                whether the values are considered to be relative to the current model position
-            move_time : float
-                time of the move motion
+            x: float
+                Location of model, x
+            y: float
+                Location of model, y
+            rot : float, optional
+                Rotating angle, range [-360, 360]
+            size : float, optional
+                Zoom ratio, default: 1
+            relative : bool, optional
+                Whether the values are considered to be relative to the current model position
+            move_time : float, optional
+                Time of the move motion
 
         Returns
         -------
-        dict of {data: dict}
-            the organized message sending to ``Vtubestudio API``
+            Organized message sending to ``Vtubestudio API``
         """
         msg_type = "MoveModelRequest"
         data = {
@@ -172,22 +166,21 @@ class VTSRequest:
         """
         Add your own new tracking parameters and use them in your VTube Studio models
 
-        Parameters
+        Args
         -----------
         parameter : str
-            name of parameter
-        min : float
-            minimum bound for the parameter
-        max : float
-            maximum bound for the parameter
-        default_value : float
-            default value
-        info : str
-            description of this parameter
+            Name of parameter
+        min : float, optional
+            Minimum bound for the parameter
+        max : float, optional
+            Maximum bound for the parameter
+        default_value : float, optional
+            Default value of this parameter
+        info : str, optional
+            Description of this parameter
 
         Returns
         -------
-        dict
             the organized message sending to ``Vtubestudio API``
         """
         data = {
@@ -210,23 +203,21 @@ class VTSRequest:
         """
         Set value for any default or custom parameter.
 
-        Parameters
+        Args
         ----------
         parameter : str
-            name of the parameter
+            Name of the parameter
         value : float
-            value of the data from -1000000 to 1000000
-        weight : float
-            you can mix the your value with vts face tracking parameter, from 0 to 1,
-            defualt(no mixture): 1
-        face_found : bool
+            Value of the data, [-1000000, 1000000]
+        weight : float, optional
+            You can mix the your value with vts face tracking parameter, from 0 to 1,
+        face_found : bool, optional
             if true, you will tell VTubeStudio to consider the user face as found,
             s.t. you can control when the "tracking lost"
 
         Returns
         -------
-        dict
-            the organized message sending to ``Vtubestudio API``
+            organized message sending to ``Vtubestudio API``
         """
         data = {
             "faceFound": face_found,
@@ -235,7 +226,19 @@ class VTSRequest:
         }
         return self.BaseRequest("InjectParameterDataRequest", data=data)
 
-    def requestDeleteCustomParameter(self, parameter):
+    def requestDeleteCustomParameter(self, parameter) -> dict:
+        '''
+        Delete custom parameter
+
+        Args
+        ----
+        parameter: str
+            Name of the parameter to delete
+        
+        Returns
+        -------
+            organized message sending to ``Vtubestudio API``
+        '''
         data = {"parameterName": parameter}
         return self.BaseRequest("ParameterDeletionRequest", data=data)
 
@@ -245,36 +248,50 @@ class VTSRequest:
         """
         subscribe event from vtubestudio api (base function, seldom directly used)
 
-        Parameters
+        Args
         ----------
         event_name : string
             event name you want to substribe
-        on : bool
+        on : bool, optional
             turn on or turn off
-        cfg : dict
-            optional, config message
+        cfg : dict, optional
+            config message
+        
+        Returns
+        -------
+            organized message sending to ``Vtubestudio API``
         """
         msg_type = "EventSubscriptionRequest"
         data = {"eventName": event_name, "subscribe": on, "config": cfg}
         return self.BaseRequest(msg_type, data)
 
-    def eventSubscriptionTest(self, test_msg="text the event will return"):
+    def eventSubscriptionTest(self, test_msg="text the event will return") -> dict:
         """
-        test event
-        recv msg type: "TestEvent"
+        Subscribe test event
+
+        Args
+        -----
+        test_msg: str, optional
+            Text of test message.
+        
+        Returns
+        --------
+            Organized subscription request message.
         """
         cfg = {"testMessageForEvent": test_msg}
         return self.eventSubscription(event_name="TestEvent", cfg=cfg)
 
     def eventSubscriptionModelLoaded(self, modelID: list = []) -> dict:
         """
-        subscribe message of model loaded/unloaded
-        recv msg type: "ModelLoadedEvent"
-        recv msg data: {
-            "modelLoaded": true/false,
-            "modelName": "My VTS Model Name",
-            "modelID": "165131471d8a4e42aae01a9738f255ef"
-        }
+        Subscribe message of model loaded/unloaded
+        Args
+        ----
+        modelID : list of int
+            ID of model for monitor
+        
+        Returns
+        --------
+            Organized subscription request message.
         """
         event_name = "ModelLoadedEvent"
         cfg = {"modelID": modelID}
@@ -283,45 +300,30 @@ class VTSRequest:
     def eventSubscriptionTrackingStatusChanged(self) -> dict:
         """
         subscribe message of tracking lost/found
-        recv msg type: "TrackingStatusChangedEvent"
-        recv msg data: {
-            "faceFound": true/false,
-            "leftHandFound": true/false,
-            "rightHandFound": true/false
-        }
+        
+        Returns
+        --------
+            Organized subscription request message.
         """
         return self.eventSubscription(event_name="TrackingStatusChangedEvent")
 
     def eventSubscribtionModelMoved(self) -> dict:
         """
-        subscribe message of model moved/resized/rotated
-        recv msg type: "ModelMovedEvent"
-        recv msg data: {
-            "modelID": "UniqueIDToIdentifyThisModelBy",
-            "modelName": "My Cool Model",
-            "modelPosition": {
-                "positionX": -0.20491,
-                "positionY": 0.1,
-                "size": -74.49664306640625,
-                "rotation": 341.3
-        }
+        Subscribe message of model moved/resized/rotated
+
+        Returns
+        -------
+            Organized subscription request message.
         """
         return self.eventSubscription(event_name="ModelMovedEvent")
 
     def eventSubsribtionModelOutline(self, draw=False) -> dict:
         """
-        subscribe message of model outline
-        draw: if is True, then the outline will show on VTubeStudio App
-        recv msg type: "ModelOutlineEvent"
-        recv msg data: {
-            "modelName": "My VTS Model Name",
-            "modelID": "165131471d8a4e42aae01a9738f255ef",
-            "convexHull": [
-                {"x": 0.200516939163208, "y": 0.8014626502990723}, {...}
-            ],
-            "convexHullCenter": {"x": 0.3527252674102783, "y": -0.24669097363948822},
-            "windowSize": {"x": 1920, "y": 1080}
-        }
+        Subscribe message of model outline
+
+        Returns
+        --------
+            Organized subscription request message.
         """
         event_name = "ModelOutlineEvent"
         cfg = {"draw": draw}

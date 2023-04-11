@@ -1,4 +1,0 @@
-## Tutorial
-
-```{include} basicusage.md
-```

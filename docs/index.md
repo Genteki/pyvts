@@ -18,17 +18,10 @@ pip3 install pyvts
 
 ```{toctree} 
    :hidden: true
-   :depth: 1
+   :maxdepth: 2
 
-README.md
-   :caption: Introduction to pyvts
-   :end-before: Demo
-   :heading-offset: 3
-tutorial.rst
-   :caption: Tutorial
-reference.rst
-   :caption: API reference 
-   :depth: 1
-CONTRIBUTING.md
-   :caption: Contributing
+toctree1_intro.md
+toctree2_tutorial.md
+toctree3_reference.rst
+toctree4_contributing.md
 ```

@@ -1,4 +1,4 @@
-### Basic Usage
+## Basic Usage
 
 First import packages
 
@@ -24,20 +24,12 @@ async def main():
     await myvts.connect()
 ```
 
-After sucessfully connected, you will see in VTubeStudio settings
-
-![](./image/example_start_plugin_connected.png)
-
 Continue with `main` function, to get access of more features, we need to get authenticated from `Vtube Studio API`.
 
 ```
     await vts.request_authenticate_token()  # get token
     await vts.request_authenticate()  # use token
 ```
-
-In `vts.request_authenticate_token`, it will request a token from `Vtube Studio API`, and save it in local file. While requesting token, a dialog will show up in VTube Studio app. Then, `vts.request_authenticate` will use the token to get accessed.
-
-![](./image/example_start_1.png)
 
 Then you can do whatever you want, like add a new parameter/set values for parameter.
 
@@ -53,3 +45,11 @@ After all, use `vts.close()` to disconnect from VTS and add `main` function to `
     if __name__ == "__main__":
         async.run(main())
 ```
+
+After sucessfully connected, you will see in VTubeStudio settings
+
+![](./image/example_start_plugin_connected.png){width="800" height="600" style="display: block; margin: 0 auto" }
+
+In `vts.request_authenticate_token`, it will request a token from `Vtube Studio API`, and save it in local file. While requesting token, a dialog will show up in VTube Studio app. Then, `vts.request_authenticate` will use the token to get accessed.
+
+![](./image/example_start_1.png)

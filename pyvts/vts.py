@@ -12,13 +12,13 @@ class vts:
     Args
     ----------
     plugin_info : dict of \{"plugin_name", "developer", "icon", "authentication_token_path"\}
-        
+
         Information about your plugin.
 
     vts_api_info: dict of \{"version", "name", "port"\}
-        Informatiopn about VtubeStudio API. 
+        Informatiopn about VtubeStudio API.
 
-    **kwarg : 
+    **kwarg :
         In case you just want to change serveral of the plugin/api Args,
         input your data here
 
@@ -42,7 +42,6 @@ class vts:
         vts_api_info: dict = config.vts_api,
         **kwargs
     ) -> None:
-
         self.port = vts_api_info["port"]
         self.websocket = None
         self.authentic_token = None
@@ -141,7 +140,7 @@ class vts:
     async def read_token(self) -> str:
         """
         Read authentic token from the token file wrote before
-        
+
         Returns
         -------
         Token string
@@ -169,7 +168,7 @@ class vts:
 
         Returns
         --------
-            Authentic status,  
+            Authentic status,
             0 - no authen & token, 1 - has token, 2 - authen, -1 - wrong token
         """
         return self.__authentic_status

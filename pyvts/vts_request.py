@@ -25,10 +25,7 @@ class VTSRequest:
         plugin_name: str = config.plugin_default["plugin_name"],
         **kwargs
     ):
-        """
-
-
-        """
+        """ """
         self.developer = developer
         self.plugin_name = plugin_name
         self.api_version = API_VERSION
@@ -227,18 +224,18 @@ class VTSRequest:
         return self.BaseRequest("InjectParameterDataRequest", data=data)
 
     def requestDeleteCustomParameter(self, parameter) -> dict:
-        '''
+        """
         Delete custom parameter
 
         Args
         ----
         parameter: str
             Name of the parameter to delete
-        
+
         Returns
         -------
             organized message sending to ``Vtubestudio API``
-        '''
+        """
         data = {"parameterName": parameter}
         return self.BaseRequest("ParameterDeletionRequest", data=data)
 
@@ -256,7 +253,7 @@ class VTSRequest:
             turn on or turn off
         cfg : dict, optional
             config message
-        
+
         Returns
         -------
             organized message sending to ``Vtubestudio API``
@@ -273,7 +270,7 @@ class VTSRequest:
         -----
         test_msg: str, optional
             Text of test message.
-        
+
         Returns
         --------
             Organized subscription request message.
@@ -288,7 +285,7 @@ class VTSRequest:
         ----
         modelID : list of int
             ID of model for monitor
-        
+
         Returns
         --------
             Organized subscription request message.
@@ -300,7 +297,7 @@ class VTSRequest:
     def eventSubscriptionTrackingStatusChanged(self) -> dict:
         """
         subscribe message of tracking lost/found
-        
+
         Returns
         --------
             Organized subscription request message.

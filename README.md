@@ -27,18 +27,10 @@ import pyvts
 import asyncio
 ```
 
-Then specify your plugin information
-```
-plugin_info = {
-    "plugin_name": "[plugin name]",
-    "developer": "[your name]",
-    "authentication_token_path": "./token.txt",
-}
-```
-Create an instance and do whateveer you want!
+Create an instance with default values, and do whateveer you want!
 ```
 async def main():
-    vts = pyvts.vts(plugin_info=plugin_info)
+    vts = pyvts.vts()
     await vts.connect()
     # Implement what you want to do
     await vts.close()

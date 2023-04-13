@@ -146,9 +146,12 @@ class VTSRequest:
     def requestHotKeyList(self) -> dict:
         return self.BaseRequest("HotkeysInCurrentModelRequest")
 
-    def requestTriggerHotKey(self, hotkeyID):
-        """TODO"""
-        pass
+    def requestTriggerHotKey(self, hotkeyID): #HotkeyNameOrUniqueIdOfHotkeyToExecute
+        msg_type = "HotkeyTriggerRequest"
+        data = {
+            "hotkeyID": hotkeyID
+        }
+        return self.BaseRequest(msg_type, data)
 
     def requestTrackingParameterList(self) -> dict:
         return self.BaseRequest("InputParameterListRequest")

@@ -149,15 +149,16 @@ class VTSRequest:
     def requestTriggerHotKey(self, hotkeyID, itemInstanceID=None) -> dict:
         """
         Trigger hotkey. # TODO, handle `itemInstanceID`
-        
+
         Args
         -----
             hotkeyID: str
-                Hotkey name or unique id of hotkey to execute, 
+                Hotkey name or unique id of hotkey to execute,
                 can be obtained via `VTSRequest.requestHotKeyList()`
             itemInstanceID: str, optional
-                Model ID of the hotkey. If left blank, it will trigger a hotkey for the currently loaded VTube Studio model
-        
+                Model ID of the hotkey. If left blank,
+                it will trigger a hotkey for the currently loaded VTubeStudio model.
+
         Returns
         -------
             Organized message sending to ``Vtubestudio API``

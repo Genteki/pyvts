@@ -39,6 +39,22 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+Example of a call animation by emulating pressing HotKeys
+```
+async def main():
+    vts = pyvts.vts(plugin_info=plugin_info)
+    await vts.connect()
+    await vts.request_authenticate_token()  # get token
+    await vts.request_authenticate()  # use token
+    b = await vts.request(vts.vts_request.requestHotKeyList())
+    hotKeyList = [hotKey['name'] for hotKey in b['data']['availableHotkeys']]
+    print(hotKeyList) # ['My Animation 1', 'My Animation 2', 'My Animation 3']
+    await vts.request(vts.vts_request.requestTriggerHotKey(hotKeyList[0])) # send request to play 'My Animation 1'
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
 
 ### Demo
 

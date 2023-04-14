@@ -146,9 +146,28 @@ class VTSRequest:
     def requestHotKeyList(self) -> dict:
         return self.BaseRequest("HotkeysInCurrentModelRequest")
 
-    def requestTriggerHotKey(self, hotkeyID):
-        """TODO"""
-        pass
+    def requestTriggerHotKey(self, hotkeyID, itemInstanceID=None) -> dict:
+        """
+        Trigger hotkey. # TODO, handle `itemInstanceID`
+
+        Args
+        -----
+            hotkeyID: str
+                Hotkey name or unique id of hotkey to execute,
+                can be obtained via `VTSRequest.requestHotKeyList()`
+            itemInstanceID: str, optional
+                Model ID of the hotkey. If left blank,
+                it will trigger a hotkey for the currently loaded VTubeStudio model.
+
+        Returns
+        -------
+            Organized message sending to ``Vtubestudio API``
+        """
+        msg_type = "HotkeyTriggerRequest"
+        data = {
+            "hotkeyID": hotkeyID
+        }
+        return self.BaseRequest(msg_type, data)
 
     def requestTrackingParameterList(self) -> dict:
         return self.BaseRequest("InputParameterListRequest")

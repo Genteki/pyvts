@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 DESCRIPTION = "A python library for interacting with the VTube Studio API"
-VERSION = "v0.2.3"
+VERSION = "v0.3.0"
 
 setup(
     name="pyvts",
@@ -23,11 +23,12 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11"
     ],
     author="Genteki Zhang",
     author_email="zhangkaiyuan.null@gmail.com",
     url="https://github.com/Genteki/pyvts",
     license="MIT",
-    packages=find_packages(where="pyvts", exclude=["tests.*", "tests"]),
-    install_requires=["websockets", "aiofile"],
+    packages=find_packages(exclude=["tests.*", "tests"]),
+    install_requires=["websockets", "aiofiles"],
 )

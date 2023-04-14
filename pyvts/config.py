@@ -5,5 +5,5 @@ plugin_default = {
     "plugin_name": "pyvts",
     "developer": "genteki",
     "icon": None,
-    "authentication_token_path": "./token.txt",
+    "authentication_token_path": "./pyvts_token.txt",
 }

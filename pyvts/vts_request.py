@@ -147,7 +147,7 @@ class VTSRequest:
         return self.BaseRequest("HotkeysInCurrentModelRequest")
 
     def requestTriggerHotKey(self, hotkeyID, itemInstanceID=None) -> dict:
-        ”“”
+        """
         Trigger hotkey. # TODO, handle `itemInstanceID`
         
         Args
@@ -161,7 +161,7 @@ class VTSRequest:
         Returns
         -------
             Organized message sending to ``Vtubestudio API``
-        “”“
+        """
         msg_type = "HotkeyTriggerRequest"
         data = {
             "hotkeyID": hotkeyID

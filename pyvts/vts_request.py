@@ -146,7 +146,7 @@ class VTSRequest:
     def requestHotKeyList(self) -> dict:
         return self.BaseRequest("HotkeysInCurrentModelRequest")
 
-    def requestTriggerHotKey(self, hotkeyID, itemInstanceID=None): -> dict
+    def requestTriggerHotKey(self, hotkeyID, itemInstanceID=None) -> dict:
         ”“”
         Trigger hotkey. # TODO, handle `itemInstanceID`
         

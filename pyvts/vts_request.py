@@ -164,9 +164,7 @@ class VTSRequest:
             Organized message sending to ``Vtubestudio API``
         """
         msg_type = "HotkeyTriggerRequest"
-        data = {
-            "hotkeyID": hotkeyID
-        }
+        data = {"hotkeyID": hotkeyID}
         return self.BaseRequest(msg_type, data)
 
     def requestTrackingParameterList(self) -> dict:

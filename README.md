@@ -43,23 +43,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-### Demo
-
-Demo [examples/start.py](./examples/start.py) is a good startpoint to make plugin for VTubeStudio. 
-
-Before you get started, make sure you've clone the library and installed all the dependcies
-
-```shell
-pip3 install -r requirements.txt 
-```
-
-Then, launch `VTubeStudio`, and run
-
-``` shell
-python3 examples/start.py 
-```
-
-in command line. You will see a new tracking parameter "start_parameter" added to VTubeStudio and some information about it in command line ouput.
+To see more examples, you could visit [tutorial](https://genteki.github.io/pyvts/toctree2_tutorial.html) in documentation.
 
 ### Contributing
 

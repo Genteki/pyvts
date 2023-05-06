@@ -1,4 +1,4 @@
-## Introduction to pyvts
+# Introduction to pyvts
 
 ```{include} README.md
     :start-after: pyvts

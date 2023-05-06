@@ -2,13 +2,13 @@
 
 First import packages
 
-```
+```python
 import asyncio, pyvts
 ```
 
 Then specify your plugin info, you can use the default value and skip this step,
 
-```
+```python
 plugin_info = {
     "plugin_name": "start pyvts",
     "developer": "Genteki",
@@ -18,7 +18,7 @@ plugin_info = {
 
 Use ``async`` prefix to define a `main` function. Creat `vts` instance in `main`.
 
-```
+```python
 async def main():
     myvts = pyvts.vts(plugin_info=plugin_info)
     await myvts.connect()
@@ -26,14 +26,14 @@ async def main():
 
 Continue with `main` function, to get access of more features, we need to get authenticated from `Vtube Studio API`.
 
-```
+```python
     await vts.request_authenticate_token()  # get token
     await vts.request_authenticate()  # use token
 ```
 
 Then you can do whatever you want, like add a new parameter/set values for parameter.
 
-```
+```python
     new_parameter_name = "start_parameter"
     await vts.request(
         vts.vts_request.requestCustomParameter(new_parameter_name)
@@ -41,7 +41,8 @@ Then you can do whatever you want, like add a new parameter/set values for param
 ```
 
 After all, use `vts.close()` to disconnect from VTS and add `main` function to `async` quene.
-```
+
+```python
     if __name__ == "__main__":
         async.run(main())
 ```

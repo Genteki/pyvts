@@ -12,11 +12,11 @@ You can easily use the library to develop VTubeStudio Plugin to achieve your goa
 
 ## Installation
 
-```
+```shell
 pip3 install pyvts 
 ```
 
-```{toctree} 
+```{toctree}
    :hidden: true
    :maxdepth: 2
 

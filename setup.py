@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 DESCRIPTION = "A python library for interacting with the VTube Studio API"
-VERSION = "v0.3.0"
+VERSION = "v0.3.1"
 
 setup(
     name="pyvts",
@@ -13,7 +13,7 @@ setup(
     long_description_content_type="text/markdown",
     keywords="vtubestudio",
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: Microsoft :: Windows",

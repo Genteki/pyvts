@@ -2,13 +2,13 @@
 
 First import packages
 
-```
+```python
 import asyncio, pyvts
 ```
 
 Then specify the plugin information and creat `vts` instance in `main`.
 
-```
+```python
 plugin_info = {
     "plugin_name": "trigger hotkey",
     "developer": "OverHome",
@@ -24,7 +24,7 @@ async def main():
 
 Contd. with ``main()``, request list of hotkey from VtubeStudio
 
-```
+```python
     response_data = await myvts.request(myvts.vts_request.requestHotKeyList())
     hotkey_list = []
     for hotkey in response_data['data']['availableHotkeys']:
@@ -34,7 +34,7 @@ Contd. with ``main()``, request list of hotkey from VtubeStudio
 
 Contd. with ``main``, send request to triiger hotkey
 
-```
+```python
     send_hotkey_request = myvts.vts_request.requestTriggerHotKey(hotkey_list[0])
     await myvts.request(send_hotkey_request) # send request to play 'My Animation 1'
     await myvts.close()

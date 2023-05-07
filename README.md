@@ -18,7 +18,7 @@ You can easily use the library to develop VTubeStudio Plugin to achieve your goa
 ### Installation
 
 ```shell
-pip3 install pyvts 
+pip install pyvts 
 ```
 
 ### Get Started
@@ -45,6 +45,6 @@ if __name__ == "__main__":
 
 To see more examples, you could visit [tutorial](https://genteki.github.io/pyvts/toctree2_tutorial.html) in documentation.
 
-### Contributing
+## Contributing
 
 Contribution is welcome. Please follow the guide of [CONTRIBUING.md](CONTRIBUTING.md).

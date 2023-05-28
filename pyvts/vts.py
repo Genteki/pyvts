@@ -55,9 +55,8 @@ class vts:
         self.plugin_developer = plugin_info["developer"]
         self.plugin_icon = plugin_info["icon"] if "icon" in plugin_info.keys() else None
         self.token_path = plugin_info["authentication_token_path"]
-        self.icon = None
         self.vts_request = vts_request.VTSRequest(
-            developer=self.plugin_developer, plugin_name=self.plugin_name, **kwargs
+            developer=self.plugin_developer, plugin_name=self.plugin_name, plugin_icon=self.plugin_icon, **kwargs
         )
         self.event_list = []
         self.recv_histroy = []

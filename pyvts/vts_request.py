@@ -15,6 +15,8 @@ class VTSRequest:
         developer the your plugin
     plugin_name : dict
         plugin name
+    plugin_icon: str
+        plugin icon
     **kwargs : optional
         other parameters like ``api_version``,
     """
@@ -23,14 +25,15 @@ class VTSRequest:
         self,
         developer: str = config.plugin_default["developer"],
         plugin_name: str = config.plugin_default["plugin_name"],
+        plugin_icon: str = config.plugin_default["plugin_icon"],
         **kwargs
     ):
         """ """
         self.developer = developer
         self.plugin_name = plugin_name
+        self.plugin_icon = plugin_icon
         self.api_version = API_VERSION
         self.api_name = API_NAME
-        self.icon = None
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -82,8 +85,8 @@ class VTSRequest:
             "pluginName": self.plugin_name,
             "pluginDeveloper": self.developer,
         }
-        if self.icon is not None:
-            data["pluginIcon"] = self.icon
+        if self.plugin_icon is not None:
+            data["pluginIcon"] = self.plugin_icon
         return self.BaseRequest(msg_type, data)
 
     def authentication(self, token) -> dict:

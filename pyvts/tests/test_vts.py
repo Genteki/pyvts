@@ -20,7 +20,7 @@ def test_vts_kwargs():
     myvts = pyvts.vts(api_name=api_name, icon=icon)
     assert myvts.api_name == api_name
     assert myvts.vts_request.api_name == api_name
-    assert myvts.icon == icon
+    assert myvts.plugin_icon == icon
     assert myvts.vts_request.icon == icon
 
 

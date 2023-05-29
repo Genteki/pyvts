@@ -3,3 +3,4 @@ websockets
 pytest
 pytest-asyncio
 coverage
+opencv-python

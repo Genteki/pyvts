@@ -30,5 +30,5 @@ setup(
     url="https://github.com/Genteki/pyvts",
     license="MIT",
     packages=find_packages(exclude=["tests.*", "tests"]),
-    install_requires=["websockets>=10.4", "aiofiles>=23.1.0"],
+    install_requires=["websockets>=10.4", "aiofiles>=23.1.0, opencv-python"],
 )

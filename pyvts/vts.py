@@ -4,8 +4,6 @@ import websockets
 import aiofiles
 from pyvts import vts_request, config, error
 import base64
-import io
-from PIL import Image
 import cv2
 
 

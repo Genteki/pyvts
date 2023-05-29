@@ -48,6 +48,7 @@ jobs:
             source env/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
+            pip install opencv-python-headless
       - run:
           name: Run tests
           command: |

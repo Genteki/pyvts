@@ -47,13 +47,14 @@ jobs:
             python3 -m venv env
             source env/bin/activate
             pip install --upgrade pip
+            apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
             pip install -r requirements.txt
       - run:
           name: Run tests
           command: |
             source env/bin/activate
             coverage run -m pytest
-            coverage report
+            coverage report -i
       - run:
           name: Upload coverage report to Codecov
           command: |
@@ -79,6 +80,7 @@ jobs:
           name: Build docs
           command: |
             cd docs
+            apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
             make html
       - store_artifacts:
           path: /root/project/docs/_build/html

@@ -1,9 +1,11 @@
-token.txt
+*token.txt
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 .vscode
+icon*
+simple_test.py
 
 # C extensions
 *.so

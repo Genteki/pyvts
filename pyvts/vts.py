@@ -3,6 +3,8 @@ import json
 import websockets
 import aiofiles
 from pyvts import vts_request, config, error
+import base64
+import cv2
 
 
 class vts:
@@ -11,7 +13,7 @@ class vts:
 
     Args
     ----------
-    plugin_info : dict of {"plugin_name", "developer", "icon", "authentication_token_path"}
+    plugin_info : dict of {"plugin_name", "developer", "plugin_icon", "authentication_token_path"}
 
         Information about your plugin.
 
@@ -53,11 +55,16 @@ class vts:
         self.api_version = vts_api_info["version"]
         self.plugin_name = plugin_info["plugin_name"]
         self.plugin_developer = plugin_info["developer"]
-        self.plugin_icon = plugin_info["icon"] if "icon" in plugin_info.keys() else None
-        self.token_path = plugin_info["authentication_token_path"]
+        self.plugin_icon = (
+            plugin_info["plugin_icon"] if "plugin_icon" in plugin_info.keys() else None
+        )
         self.icon = None
+        self.token_path = plugin_info["authentication_token_path"]
         self.vts_request = vts_request.VTSRequest(
-            developer=self.plugin_developer, plugin_name=self.plugin_name, **kwargs
+            developer=self.plugin_developer,
+            plugin_name=self.plugin_name,
+            plugin_icon=self.plugin_icon,
+            **kwargs
         )
         self.event_list = []
         self.recv_histroy = []
@@ -109,6 +116,7 @@ class vts:
 
     async def request_authenticate_token(self) -> None:
         """Get authentication code from VTubeStudio"""
+        print(self.plugin_icon)
         request_msg = self.vts_request.authentication_token()
         response_dict = await self.request(request_msg)
         try:
@@ -198,3 +206,21 @@ class vts:
         """
         # set up lisening action
         return await self.request(msg)
+
+    def __read_icon(self, icon_path: str) -> str:
+        icon_img = cv2.imread(icon_path)
+        resized_img = cv2.resize(icon_img, (128, 128))
+        _, im_arr = cv2.imencode(".jpg", resized_img)
+        base64_icon = base64.b64encode(im_arr).decode("UTF-8")
+        return base64_icon
+
+    def load_icon(self, icon_path: str) -> None:
+        """
+        Load your plugin icon
+
+        Args:
+        -----------
+        icon_path :str
+            path to icon image
+        """
+        self.plugin_icon = self.__read_icon(icon_path)

@@ -80,6 +80,7 @@ jobs:
           name: Build docs
           command: |
             cd docs
+            apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
             make html
       - store_artifacts:
           path: /root/project/docs/_build/html

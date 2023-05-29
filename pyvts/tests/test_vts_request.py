@@ -13,4 +13,4 @@ def test_vts_request_constructor_kwds():
     """test whether vts_request constructor **kwds works properly"""
     vtsr = vts_request.VTSRequest(api_name="it is not vts", icon="it is an icon")
     assert not vtsr.api_name == config.vts_api["name"]
-    assert vtsr.plugin_icon is not None
+    assert vtsr.icon is not None

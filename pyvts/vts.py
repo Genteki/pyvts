@@ -11,7 +11,7 @@ class vts:
 
     Args
     ----------
-    plugin_info : dict of {"plugin_name", "developer", "icon", "authentication_token_path"}
+    plugin_info : dict of {"plugin_name", "developer", "plugin_icon", "authentication_token_path"}
 
         Information about your plugin.
 
@@ -53,7 +53,8 @@ class vts:
         self.api_version = vts_api_info["version"]
         self.plugin_name = plugin_info["plugin_name"]
         self.plugin_developer = plugin_info["developer"]
-        self.plugin_icon = plugin_info["icon"] if "icon" in plugin_info.keys() else None
+        self.plugin_icon = plugin_info["plugin_icon"] if "plugin_icon" in plugin_info.keys() else None
+        self.icon = None
         self.token_path = plugin_info["authentication_token_path"]
         self.vts_request = vts_request.VTSRequest(
             developer=self.plugin_developer, plugin_name=self.plugin_name, plugin_icon=self.plugin_icon, **kwargs

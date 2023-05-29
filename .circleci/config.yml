@@ -54,7 +54,7 @@ jobs:
           command: |
             source env/bin/activate
             coverage run -m pytest
-            coverage report
+            coverage report -i
       - run:
           name: Upload coverage report to Codecov
           command: |

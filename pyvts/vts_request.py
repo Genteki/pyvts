@@ -284,8 +284,10 @@ class VTSRequest:
             blue value of tint (0-255)
         alpha : int, optional
             alpha value of tint (0-255)
+        tint_all: bool, optional
+            boolean option to tint all
         jeb : bool, optional
-            wether to activate "jeb mode"(rainbow cycle) on art meshes
+            boolean option to activate "jeb mode"(rainbow cycle) on art meshes
 
         Returns
         -------

@@ -6,6 +6,7 @@ __pycache__/
 .vscode
 icon*
 simple_test.py
+.DS_Store
 
 # C extensions
 *.so

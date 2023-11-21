@@ -5,6 +5,7 @@ import aiofiles
 from pyvts import vts_request, config, error
 import base64
 import cv2
+import os
 
 
 class vts:
@@ -114,18 +115,26 @@ class vts:
         response_dict = json.loads(response_msg)
         return response_dict
 
-    async def request_authenticate_token(self) -> None:
+    async def request_authenticate_token(self, force=False) -> None:
         """Get authentication code from VTubeStudio"""
         print(self.plugin_icon)
-        request_msg = self.vts_request.authentication_token()
-        response_dict = await self.request(request_msg)
-        try:
-            assert "authenticationToken" in response_dict["data"].keys(), response_dict
-            self.authentic_token = response_dict["data"]["authenticationToken"]
-            if self.__authentic_status == 0 or self.__authentic_status == -1:
-                self.__authentic_status = 1
-        except AssertionError:
-            print("authentication failed")
+
+        response = await self.read_token()
+
+        # response is none or empty if never done before, need to write to file
+        if response is None or response == "" or force:
+            request_msg = self.vts_request.authentication_token()
+            response_dict = await self.request(request_msg)
+            try:
+                assert (
+                    "authenticationToken" in response_dict["data"].keys()
+                ), response_dict
+                self.authentic_token = response_dict["data"]["authenticationToken"]
+                await self.write_token()  # save token to file for future runs
+                if self.__authentic_status == 0 or self.__authentic_status == -1:
+                    self.__authentic_status = 1
+            except AssertionError:
+                print("authentication failed")
 
     async def request_authenticate(self) -> bool:
         """
@@ -153,6 +162,9 @@ class vts:
         -------
         Token string
         """
+        if not os.path.exists(self.token_path):
+            return self.authentic_token
+
         async with aiofiles.open(self.token_path, mode="r") as f_token:
             await f_token.seek(0)
             self.authentic_token = await f_token.read()

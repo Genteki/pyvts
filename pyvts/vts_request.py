@@ -266,6 +266,7 @@ class VTSRequest:
         green: int = 0,
         blue: int = 0,
         alpha: int = 255,
+        tint_all: bool = False,
         jeb: bool = False,
     ) -> dict:
         """
@@ -299,7 +300,7 @@ class VTSRequest:
                 "jeb_": jeb,
             },
             "artMeshMatcher": {
-                "tintAll": False,
+                "tintAll": tint_all,
                 "nameExact": name_list,
             },
         }

@@ -259,6 +259,76 @@ class VTSRequest:
         data = {"parameterName": parameter}
         return self.BaseRequest("ParameterDeletionRequest", data=data)
 
+    def ColorTintRequest(
+        self,
+        red: int = 0,
+        green: int = 0,
+        blue: int = 0,
+        alpha: int = 255,
+        jeb: bool = False,
+        mix_with_scene_lighting_color: float = 1,
+        tint_all: bool = False,
+        art_mesh_number: list = [],
+        name_exact: list = [],
+        name_contains: list = [],
+        tag_exact: list = [],
+        tag_contains: list = [],
+    ) -> dict:
+        """
+        Alter the color of an Artmesh on the current model
+
+        Args
+        -----------
+        red : int, optional
+            red value of tint (0-255)
+        green : int, optional
+            green value of tint (0-255)
+        blue : int, optional
+            blue value of tint (0-255)
+        alpha : int, optional
+            alpha value of tint (0-255)
+        jeb : bool, optional
+            boolean option to activate "jeb mode"(rainbow cycle) on art meshes
+        mix_with_scene_lighting_color: float, optional
+            float between 0 and 1, determines how much tint is mixed with scene lighting
+        tint_all: bool, optional
+            boolean option to tint all
+        art_mesh_number: list, optional
+            list of ints corresponding to art mesh numbers to color
+        name_exact: list, optional
+            list of strings of exact names of meshes to color
+        name_contains: list, optional
+            list of strings of partial names of meshes to color
+        tag_exact: list, optional
+            list of strings of exact tags of meshes to color
+        tag_contains: list, optional
+            list of strings of partial names of tags of meshes to color
+
+
+        Returns
+        -------
+            the organized message sending to ``Vtubestudio API``
+        """
+        data = {
+            "colorTint": {
+                "colorR": red,
+                "colorG": green,
+                "colorB": blue,
+                "colorA": alpha,
+                "mixWithSceneLightingColor": mix_with_scene_lighting_color,
+                "jeb_": jeb,
+            },
+            "artMeshMatcher": {
+                "tintAll": tint_all,
+                "artMeshNumber": art_mesh_number,
+                "nameExact": name_exact,
+                "nameContains": name_contains,
+                "tagExact": tag_exact,
+                "tagContains": tag_contains,
+            },
+        }
+        return self.BaseRequest("ColorTintRequest", data=data)
+
     def eventSubscription(
         self, event_name: str, on: bool = True, cfg: dict = {"0": 0}
     ) -> dict:

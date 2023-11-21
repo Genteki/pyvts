@@ -25,7 +25,7 @@ async def test_integration():
     assert myvts.get_connection_status() == 1
 
     # step 02
-    await myvts.request_authenticate_token()
+    await myvts.request_authenticate_token(force=True)
     assert myvts.get_authentic_status() == 1
 
     # step 04

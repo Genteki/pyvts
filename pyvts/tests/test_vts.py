@@ -66,7 +66,7 @@ async def test_vts_authenticate(myvts: pyvts.vts):
     fake_server = FakeVtubeStudioAPIServer()
     await fake_server.start(port=PORT)
     await myvts.connect()
-    await myvts.request_authenticate_token()
+    await myvts.request_authenticate_token(force=True)
     assert myvts.get_authentic_status() == 1, myvts.authentic_token
     await myvts.request_authenticate()
     assert myvts.get_authentic_status() == 2

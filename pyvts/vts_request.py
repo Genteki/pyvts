@@ -261,21 +261,24 @@ class VTSRequest:
 
     def ColorTintRequest(
         self,
-        name_list: list,
         red: int = 0,
         green: int = 0,
         blue: int = 0,
         alpha: int = 255,
-        tint_all: bool = False,
         jeb: bool = False,
+        mix_with_scene_lighting_color: float = 1,
+        tint_all: bool = False,
+        art_mesh_number: list = [],
+        name_exact: list = [],
+        name_contains: list = [],
+        tag_exact: list = [],
+        tag_contains: list = [],
     ) -> dict:
         """
         Alter the color of an Artmesh on the current model
 
         Args
         -----------
-        name_list : list
-            list of the exact names of art meshes to be used
         red : int, optional
             red value of tint (0-255)
         green : int, optional
@@ -284,10 +287,23 @@ class VTSRequest:
             blue value of tint (0-255)
         alpha : int, optional
             alpha value of tint (0-255)
-        tint_all: bool, optional
-            boolean option to tint all
         jeb : bool, optional
             boolean option to activate "jeb mode"(rainbow cycle) on art meshes
+        mix_with_scene_lighting_color: float, optional
+            float between 0 and 1, determines how much tint is mixed with scene lighting
+        tint_all: bool, optional
+            boolean option to tint all
+        art_mesh_number: list, optional
+            list of ints corresponding to art mesh numbers to color
+        name_exact: list, optional
+            list of strings of exact names of meshes to color
+        name_contains: list, optional
+            list of strings of partial names of meshes to color
+        tag_exact: list, optional
+            list of strings of exact tags of meshes to color
+        tag_contains: list, optional
+            list of strings of partial names of tags of meshes to color
+
 
         Returns
         -------
@@ -303,7 +319,11 @@ class VTSRequest:
             },
             "artMeshMatcher": {
                 "tintAll": tint_all,
-                "nameExact": name_list,
+                "artMeshNumber": art_mesh_number,
+                "nameExact": name_exact,
+                "nameContains": name_contains,
+                "tagExact": tag_exact,
+                "tagContains": tag_contains,
             },
         }
         return self.BaseRequest("ColorTintRequest", data=data)

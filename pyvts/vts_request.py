@@ -315,6 +315,7 @@ class VTSRequest:
                 "colorG": green,
                 "colorB": blue,
                 "colorA": alpha,
+                "mixWithSceneLightingColor": mix_with_scene_lighting_color,
                 "jeb_": jeb,
             },
             "artMeshMatcher": {

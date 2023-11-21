@@ -259,6 +259,52 @@ class VTSRequest:
         data = {"parameterName": parameter}
         return self.BaseRequest("ParameterDeletionRequest", data=data)
 
+    def ColorTintRequest(
+        self,
+        name_list: list,
+        red: int = 0,
+        green: int = 0,
+        blue: int = 0,
+        alpha: int = 255,
+        jeb: bool = False,
+    ) -> dict:
+        """
+        Alter the color of an Artmesh on the current model
+
+        Args
+        -----------
+        name_list : list
+            list of the exact names of art meshes to be used
+        red : int, optional
+            red value of tint (0-255)
+        green : int, optional
+            green value of tint (0-255)
+        blue : int, optional
+            blue value of tint (0-255)
+        alpha : int, optional
+            alpha value of tint (0-255)
+        jeb : bool, optional
+            wether to activate "jeb mode"(rainbow cycle) on art meshes
+
+        Returns
+        -------
+            the organized message sending to ``Vtubestudio API``
+        """
+        data = {
+            "colorTint": {
+                "colorR": red,
+                "colorG": green,
+                "colorB": blue,
+                "colorA": alpha,
+                "jeb_": jeb,
+            },
+            "artMeshMatcher": {
+                "tintAll": False,
+                "nameExact": name_list,
+            },
+        }
+        return self.BaseRequest("ColorTintRequest", data=data)
+
     def eventSubscription(
         self, event_name: str, on: bool = True, cfg: dict = {"0": 0}
     ) -> dict:

@@ -45,6 +45,10 @@ class vts:
         vts_api_info: dict = config.vts_api,
         **kwargs
     ) -> None:
+        if "host" in vts_api_info:
+            self.host = vts_api_info["host"]
+        else:
+            self.host = "localhost"
         self.port = vts_api_info["port"]
         self.websocket = None
         self.authentic_token = None
@@ -76,7 +80,7 @@ class vts:
         """Connect to VtubeStudio API server"""
         try:
             self.websocket = await websockets.connect(
-                "ws://localhost:" + str(self.port)
+                "ws://" + self.host + ":" + str(self.port)
             )
             self.__connection_status = 1
         except error.ConnectionError as e:

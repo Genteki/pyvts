@@ -109,6 +109,43 @@ async def test_vts_custon_parameter(myvts: pyvts.vts):
 
 
 @pytest.mark.asyncio
+async def test_vts_custon_parameter_multi(myvts: pyvts.vts):
+    """test vts functions for multi parameter update"""
+    fake_server = FakeVtubeStudioAPIServer()
+    await fake_server.start(port=PORT)
+    await myvts.connect()
+    param_names = ["test-1", "test-2"]
+    vals = [0.5, 0.5]
+    # create custom parameters
+    for name in param_names:
+        await myvts.request(
+            myvts.vts_request.requestCustomParameter(name, default_value=0)
+        )
+        custom_param_value = await myvts.request(
+            myvts.vts_request.requestParameterValue(name)
+        )
+        assert custom_param_value["data"]["value"] == 0
+    # set value for these parameters
+    await myvts.request(
+        myvts.vts_request.requestSetMultiParameterValue(param_names, vals)
+    )
+
+    for name in param_names:
+        custom_param_value = await myvts.request(
+            myvts.vts_request.requestParameterValue(name)
+        )
+        assert custom_param_value["data"]["value"] == 0.5
+        # delete parameter
+        await myvts.request(myvts.vts_request.requestDeleteCustomParameter(name))
+        custom_param_value = await myvts.request(
+            myvts.vts_request.requestParameterValue(name)
+        )
+        assert custom_param_value["data"]["errorID"] == 500
+    await myvts.close()
+    await fake_server.stop()
+
+
+@pytest.mark.asyncio
 async def test_vts_event_subscription(myvts: pyvts.vts):
     """test vts functions about event subscribe"""
     fake_server = FakeVtubeStudioAPIServer()

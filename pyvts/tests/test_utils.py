@@ -72,21 +72,22 @@ class FakeVtubeStudioAPIServer:
                     del self.custom_param[pname]
                     send_msg["data"] = {"parameter": pname, "message": "Deleted"}
             elif dict_msg["messageType"] == "InjectParameterDataRequest":
-                pname = dict_msg["data"]["parameterValues"][0]["id"]
-                if pname in self.custom_param:
-                    self.custom_param[pname]["value"] = float(
-                        dict_msg["data"]["parameterValues"][0]["value"]
-                    ) * float(dict_msg["data"]["parameterValues"][0]["weight"]) + float(
-                        self.custom_param[pname]["value"]
-                    ) * float(
-                        (1 - dict_msg["data"]["parameterValues"][0]["weight"])
-                    )
-                    send_msg["data"] = {"parameter": pname, "message": "set"}
-                else:
-                    send_msg["data"] = {
-                        "errorID": 500,
-                        "message": "Given parameter start parameter does not exist.",
-                    }
+                for pdata in dict_msg["data"]["parameterValues"]:
+                    pname = pdata["id"]
+                    if pname in self.custom_param:
+                        self.custom_param[pname]["value"] = float(
+                            pdata["value"]
+                        ) * float(pdata["weight"]) + float(
+                            self.custom_param[pname]["value"]
+                        ) * float(
+                            (1 - pdata["weight"])
+                        )
+                        send_msg["data"] = {"parameter": pname, "message": "set"}
+                    else:
+                        send_msg["data"] = {
+                            "errorID": 500,
+                            "message": "Given parameter start parameter does not exist.",
+                        }
 
             # About event subscribe
             elif dict_msg["messageType"] == "EventSubscriptionRequest":

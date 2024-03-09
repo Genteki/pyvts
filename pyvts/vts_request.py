@@ -243,6 +243,43 @@ class VTSRequest:
         }
         return self.BaseRequest("InjectParameterDataRequest", data=data)
 
+    def requestSetMultiParameterValue(
+        self,
+        parameters: list[str],
+        values: list[float],
+        weight: float = 1,
+        face_found=False,
+        mode="set",
+    ) -> dict:
+        """
+        Set values for any default or custom parameters.
+
+        Args
+        ----------
+        parameter : list[str]
+            Names of the parameters
+        value : list[float]
+            Values of the data, [-1000000, 1000000]
+        weight : float, optional
+            You can mix the your value with vts face tracking parameter, from 0 to 1,
+        face_found : bool, optional
+            if true, you will tell VTubeStudio to consider the user face as found,
+            s.t. you can control when the "tracking lost"
+
+        Returns
+        -------
+            organized message sending to ``Vtubestudio API``
+        """
+        data = {
+            "faceFound": face_found,
+            "mode": mode,
+            "parameterValues": [
+                {"id": parameters[i], "weight": weight, "value": values[i]}
+                for i, _ in enumerate(parameters)
+            ],
+        }
+        return self.BaseRequest("InjectParameterDataRequest", data=data)
+
     def requestDeleteCustomParameter(self, parameter) -> dict:
         """
         Delete custom parameter

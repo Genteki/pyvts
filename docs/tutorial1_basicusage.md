@@ -16,12 +16,12 @@ plugin_info = {
 }
 ```
 
-Use ``async`` prefix to define a `main` function. Creat `vts` instance in `main`.
+Use ``async`` prefix to define a `main` function. Create `vts` instance in `main`.
 
 ```python
 async def main():
-    myvts = pyvts.vts(plugin_info=plugin_info)
-    await myvts.connect()
+    vts = pyvts.vts(plugin_info=plugin_info)
+    await vts.connect()
 ```
 
 Continue with `main` function, to get access of more features, we need to get authenticated from `Vtube Studio API`.

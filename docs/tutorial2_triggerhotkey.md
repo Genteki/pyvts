@@ -6,7 +6,7 @@ First import packages
 import asyncio, pyvts
 ```
 
-Then specify the plugin information and creat `vts` instance in `main`.
+Then specify the plugin information and create `vts` instance in `main`.
 
 ```python
 plugin_info = {
@@ -32,7 +32,7 @@ Contd. with ``main()``, request list of hotkey from VtubeStudio
     print(hotkey_list) # ['My Animation 1', 'My Animation 2', ...]
 ```
 
-Contd. with ``main``, send request to triiger hotkey
+Contd. with ``main``, send request to trigger hotkey
 
 ```python
     send_hotkey_request = myvts.vts_request.requestTriggerHotKey(hotkey_list[0])

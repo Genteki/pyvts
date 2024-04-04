@@ -38,7 +38,7 @@ async def main():
     print(new_paraemter_value["data"])  # show
 
     # Delete that parameter
-    await asyncio.sleep(3)  # sleep 10 seconds
+    await asyncio.sleep(3)  # sleep for 3 seconds
     return_msg = await vts.request(
         vts.vts_request.requestDeleteCustomParameter(new_parameter_name)
     )  # delete the parameter

@@ -19,7 +19,7 @@ class vts:
         Information about your plugin.
 
     vts_api_info: dict of {"version", "name", "port"}
-        Informatiopn about VtubeStudio API.
+        Information about VTubeStudio API.
 
     **kwarg :
         In case you just want to change serveral of the plugin/api Args,

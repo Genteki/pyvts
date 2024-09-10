@@ -1,6 +1,7 @@
 import pyvts
 import asyncio
 
+
 async def main():
     myvts = pyvts.vts()
     await myvts.connect()
@@ -12,7 +13,7 @@ async def main():
     for hotkey in response_data['data']['availableHotkeys']:
         hotkey_list.append(hotkey['name'])
     send_hotkey_request = myvts.vts_request.requestTriggerHotKey(hotkey_list[0])
-    await myvts.request(send_hotkey_request) # send request to play 'My Animation 1'
+    await myvts.request(send_hotkey_request)  # send request to play 'My Animation 1'
     await myvts.close()
 
 if __name__ == "__main__":

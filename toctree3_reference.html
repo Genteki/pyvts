@@ -1,0 +1,1075 @@
+
+<!DOCTYPE html>
+
+
+<html lang="English" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>API reference &#8212; pyvts 0.3.3 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=74cf0143"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'toctree3_reference';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="toctree4_contributing.html" />
+    <link rel="prev" title="Using functions" href="tutorial3_usingfunctions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="English"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyvts 0.3.3 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="toctree1_intro.html">Introduction to pyvts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="toctree2_tutorial.html">Tutorial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1_basicusage.html">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2_triggerhotkey.html">Trigger Hotkey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial3_usingfunctions.html">Using functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toctree4_contributing.html">Contributing</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/toctree3_reference.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>API reference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts-vts">pyvts.vts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts"><code class="docutils literal notranslate"><span class="pre">vts</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.close"><code class="docutils literal notranslate"><span class="pre">vts.close()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.connect"><code class="docutils literal notranslate"><span class="pre">vts.connect()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.event_subscribe"><code class="docutils literal notranslate"><span class="pre">vts.event_subscribe()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.get_authentic_status"><code class="docutils literal notranslate"><span class="pre">vts.get_authentic_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.get_connection_status"><code class="docutils literal notranslate"><span class="pre">vts.get_connection_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.load_icon"><code class="docutils literal notranslate"><span class="pre">vts.load_icon()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.read_token"><code class="docutils literal notranslate"><span class="pre">vts.read_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.request"><code class="docutils literal notranslate"><span class="pre">vts.request()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.request_authenticate"><code class="docutils literal notranslate"><span class="pre">vts.request_authenticate()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.request_authenticate_token"><code class="docutils literal notranslate"><span class="pre">vts.request_authenticate_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.write_token"><code class="docutils literal notranslate"><span class="pre">vts.write_token()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts-vtsrequest">pyvts.VTSRequest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest"><code class="docutils literal notranslate"><span class="pre">VTSRequest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.BaseRequest"><code class="docutils literal notranslate"><span class="pre">VTSRequest.BaseRequest()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.ColorTintRequest"><code class="docutils literal notranslate"><span class="pre">VTSRequest.ColorTintRequest()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.authentication"><code class="docutils literal notranslate"><span class="pre">VTSRequest.authentication()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.authentication_token"><code class="docutils literal notranslate"><span class="pre">VTSRequest.authentication_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscribtionModelMoved"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscribtionModelMoved()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscription"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscription()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscriptionModelLoaded"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscriptionModelLoaded()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscriptionTest"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscriptionTest()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscriptionTrackingStatusChanged"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscriptionTrackingStatusChanged()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubsribtionModelOutline"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubsribtionModelOutline()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestCustomParameter"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestCustomParameter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestDeleteCustomParameter"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestDeleteCustomParameter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestHotKeyList"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestHotKeyList()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestMoveModel"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestMoveModel()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestParameterValue"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestParameterValue()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestSetMultiParameterValue"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestSetMultiParameterValue()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestSetParameterValue"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestSetParameterValue()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestTrackingParameterList"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestTrackingParameterList()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestTriggerHotKey"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestTriggerHotKey()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="api-reference">
+<span id="reference"></span><h1>API reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h1>
+<section id="pyvts-vts">
+<h2>pyvts.vts<a class="headerlink" href="#pyvts-vts" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvts.vts">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyvts.</span></span><span class="sig-name descname"><span class="pre">vts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plugin_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'authentication_token_path':</span> <span class="pre">'./pyvts_token.txt',</span> <span class="pre">'developer':</span> <span class="pre">'genteki',</span> <span class="pre">'plugin_icon':</span> <span class="pre">None,</span> <span class="pre">'plugin_name':</span> <span class="pre">'pyvts'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vts_api_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'host':</span> <span class="pre">'localhost',</span> <span class="pre">'name':</span> <span class="pre">'VTubeStudioPublicAPI',</span> <span class="pre">'port':</span> <span class="pre">8001,</span> <span class="pre">'version':</span> <span class="pre">'1.0'}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">VtubeStudio</span> <span class="pre">API</span></code> Connector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plugin_info</strong> (<em>dict</em><em> of </em><em>{&quot;plugin_name&quot;</em><em>, </em><em>&quot;developer&quot;</em><em>, </em><em>&quot;plugin_icon&quot;</em><em>, </em><em>&quot;authentication_token_path&quot;}</em>) -- Information about your plugin.</p></li>
+<li><p><strong>vts_api_info</strong> (<em>dict</em><em> of </em><em>{&quot;version&quot;</em><em>, </em><em>&quot;name&quot;</em><em>, </em><em>&quot;port&quot;}</em>) -- Information about VTubeStudio API.</p></li>
+<li><p><strong>**kwarg</strong> -- In case you just want to change serveral of the plugin/api Args,
+input your data here</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">Args</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;plugin_name&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;developer&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;authentication_token_path&quot;</span><span class="p">:</span> <span class="s2">&quot;./token.txt&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyvts</span><span class="o">.</span><span class="n">vts</span><span class="p">(</span><span class="n">plugin_info</span><span class="o">=</span><span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">**kwarg</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pyvts</span><span class="o">.</span><span class="n">vts</span><span class="p">(</span><span class="n">plugin_name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">developer</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.close">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.close" title="Link to this definition">#</a></dt>
+<dd><p>Close connection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.connect">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.connect" title="Link to this definition">#</a></dt>
+<dd><p>Connect to VtubeStudio API server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.event_subscribe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">event_subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.event_subscribe" title="Link to this definition">#</a></dt>
+<dd><p>subscribe event from vts api</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>msg</strong> (<em>dict</em>) -- Event subscription message generated from method of <cite>VTSRequest</cite></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Message returned from VTube Studio API</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.get_authentic_status">
+<span class="sig-name descname"><span class="pre">get_authentic_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.get_authentic_status" title="Link to this definition">#</a></dt>
+<dd><p>Get authentic status</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Authentic status,
+0 - no authen &amp; token, 1 - has token, 2 - authen, -1 - wrong token</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.get_connection_status">
+<span class="sig-name descname"><span class="pre">get_connection_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.get_connection_status" title="Link to this definition">#</a></dt>
+<dd><p>Get connection status</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Connection status, 0: not connected, 1: connected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.load_icon">
+<span class="sig-name descname"><span class="pre">load_icon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">icon_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.load_icon" title="Link to this definition">#</a></dt>
+<dd><p>Load your plugin icon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>icon_path</strong> (<em>str</em>)</p>
+</dd>
+</dl>
+<section id="args">
+<h3>Args:<a class="headerlink" href="#args" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>icon_path :str</dt><dd><p>path to icon image</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.read_token">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.read_token" title="Link to this definition">#</a></dt>
+<dd><p>Read authentic token from the token file wrote before</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Token string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.request">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.request" title="Link to this definition">#</a></dt>
+<dd><p>Send request to VTubeStudio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>request_msg</strong> (<em>dict</em>) -- Message generated from <cite>VTSRequest</cite></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Message from VTubeStudio API, data is stored in <code class="docutils literal notranslate"><span class="pre">return_dict[&quot;data&quot;]</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>response_dict</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">recv_msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">myvts</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">send_msg</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">recv_data</span> <span class="o">=</span> <span class="n">recv_msg</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.request_authenticate">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request_authenticate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.request_authenticate" title="Link to this definition">#</a></dt>
+<dd><p>Get authenticated from vtubestudio to have more access</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the plugin has been authenticated by VTS</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.request_authenticate_token">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">request_authenticate_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.request_authenticate_token" title="Link to this definition">#</a></dt>
+<dd><p>Get authentication code from VTubeStudio</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.vts.write_token">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">write_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.vts.write_token" title="Link to this definition">#</a></dt>
+<dd><p>Write authentic token into localfile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="pyvts-vtsrequest">
+<h2>pyvts.VTSRequest<a class="headerlink" href="#pyvts-vtsrequest" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyvts.VTSRequest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyvts.</span></span><span class="sig-name descname"><span class="pre">VTSRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">developer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'genteki'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugin_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pyvts'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugin_icon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>VtubeStudio API Request Generator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>developer</strong> (<em>str</em>) -- developer the your plugin</p></li>
+<li><p><strong>plugin_name</strong> (<em>dict</em>) -- plugin name</p></li>
+<li><p><strong>plugin_icon</strong> (<em>str</em>) -- plugin icon</p></li>
+<li><p><strong>**kwargs</strong> (<em>optional</em>) -- other parameters like <code class="docutils literal notranslate"><span class="pre">api_version</span></code>,</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.BaseRequest">
+<span class="sig-name descname"><span class="pre">BaseRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SomeID'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.BaseRequest" title="Link to this definition">#</a></dt>
+<dd><p>Standard Request</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>message_type</strong> (<em>str</em>) -- Message type of request</p></li>
+<li><p><strong>data</strong> (<em>dict</em><em>, </em><em>optional</em>) -- Relavent data sending to <code class="docutils literal notranslate"><span class="pre">VTubeStudio</span> <span class="pre">API</span></code></p></li>
+<li><p><strong>request_id</strong> (<em>str</em><em>, </em><em>optional</em>) -- String to mark the request, not important</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.ColorTintRequest">
+<span class="sig-name descname"><span class="pre">ColorTintRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">red</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jeb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mix_with_scene_lighting_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tint_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">art_mesh_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_exact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_contains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_exact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_contains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.ColorTintRequest" title="Link to this definition">#</a></dt>
+<dd><p>Alter the color of an Artmesh on the current model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>red</strong> (<em>int</em><em>, </em><em>optional</em>) -- red value of tint (0-255)</p></li>
+<li><p><strong>green</strong> (<em>int</em><em>, </em><em>optional</em>) -- green value of tint (0-255)</p></li>
+<li><p><strong>blue</strong> (<em>int</em><em>, </em><em>optional</em>) -- blue value of tint (0-255)</p></li>
+<li><p><strong>alpha</strong> (<em>int</em><em>, </em><em>optional</em>) -- alpha value of tint (0-255)</p></li>
+<li><p><strong>jeb</strong> (<em>bool</em><em>, </em><em>optional</em>) -- boolean option to activate &quot;jeb mode&quot;(rainbow cycle) on art meshes</p></li>
+<li><p><strong>mix_with_scene_lighting_color</strong> (<em>float</em><em>, </em><em>optional</em>) -- float between 0 and 1, determines how much tint is mixed with scene lighting</p></li>
+<li><p><strong>tint_all</strong> (<em>bool</em><em>, </em><em>optional</em>) -- boolean option to tint all</p></li>
+<li><p><strong>art_mesh_number</strong> (<em>list</em><em>, </em><em>optional</em>) -- list of ints corresponding to art mesh numbers to color</p></li>
+<li><p><strong>name_exact</strong> (<em>list</em><em>, </em><em>optional</em>) -- list of strings of exact names of meshes to color</p></li>
+<li><p><strong>name_contains</strong> (<em>list</em><em>, </em><em>optional</em>) -- list of strings of partial names of meshes to color</p></li>
+<li><p><strong>tag_exact</strong> (<em>list</em><em>, </em><em>optional</em>) -- list of strings of exact tags of meshes to color</p></li>
+<li><p><strong>tag_contains</strong> (<em>list</em><em>, </em><em>optional</em>) -- list of strings of partial names of tags of meshes to color</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.authentication">
+<span class="sig-name descname"><span class="pre">authentication</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.authentication" title="Link to this definition">#</a></dt>
+<dd><p>use auth_token to get more access</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>token</strong> (<em>str</em>) -- authenication token</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.authentication_token">
+<span class="sig-name descname"><span class="pre">authentication_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.authentication_token" title="Link to this definition">#</a></dt>
+<dd><p>generate request msg to requirer authentication_token</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="n">myvts</span><span class="o">.</span><span class="n">vts_request</span><span class="o">.</span><span class="n">authentication_token</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">return_msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">myvts</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.eventSubscribtionModelMoved">
+<span class="sig-name descname"><span class="pre">eventSubscribtionModelMoved</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.eventSubscribtionModelMoved" title="Link to this definition">#</a></dt>
+<dd><p>Subscribe message of model moved/resized/rotated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Organized subscription request message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.eventSubscription">
+<span class="sig-name descname"><span class="pre">eventSubscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'0':</span> <span class="pre">0}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.eventSubscription" title="Link to this definition">#</a></dt>
+<dd><p>subscribe event from vtubestudio api (base function, seldom directly used)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>event_name</strong> (<em>string</em>) -- event name you want to substribe</p></li>
+<li><p><strong>on</strong> (<em>bool</em><em>, </em><em>optional</em>) -- turn on or turn off</p></li>
+<li><p><strong>cfg</strong> (<em>dict</em><em>, </em><em>optional</em>) -- config message</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.eventSubscriptionModelLoaded">
+<span class="sig-name descname"><span class="pre">eventSubscriptionModelLoaded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modelID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.eventSubscriptionModelLoaded" title="Link to this definition">#</a></dt>
+<dd><p>Subscribe message of model loaded/unloaded
+Args
+:rtype: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Organized subscription request message.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>modelID</strong> (<em>list</em>)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.eventSubscriptionTest">
+<span class="sig-name descname"><span class="pre">eventSubscriptionTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'text</span> <span class="pre">the</span> <span class="pre">event</span> <span class="pre">will</span> <span class="pre">return'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.eventSubscriptionTest" title="Link to this definition">#</a></dt>
+<dd><p>Subscribe test event</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>test_msg</strong> (<em>str</em><em>, </em><em>optional</em>) -- Text of test message.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Organized subscription request message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.eventSubscriptionTrackingStatusChanged">
+<span class="sig-name descname"><span class="pre">eventSubscriptionTrackingStatusChanged</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.eventSubscriptionTrackingStatusChanged" title="Link to this definition">#</a></dt>
+<dd><p>subscribe message of tracking lost/found</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Organized subscription request message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.eventSubsribtionModelOutline">
+<span class="sig-name descname"><span class="pre">eventSubsribtionModelOutline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.eventSubsribtionModelOutline" title="Link to this definition">#</a></dt>
+<dd><p>Subscribe message of model outline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Organized subscription request message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.requestCustomParameter">
+<span class="sig-name descname"><span class="pre">requestCustomParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.requestCustomParameter" title="Link to this definition">#</a></dt>
+<dd><p>Add your own new tracking parameters and use them in your VTube Studio models</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>parameter</strong> (<em>str</em>) -- Name of parameter</p></li>
+<li><p><strong>min</strong> (<em>float</em><em>, </em><em>optional</em>) -- Minimum bound for the parameter</p></li>
+<li><p><strong>max</strong> (<em>float</em><em>, </em><em>optional</em>) -- Maximum bound for the parameter</p></li>
+<li><p><strong>default_value</strong> (<em>float</em><em>, </em><em>optional</em>) -- Default value of this parameter</p></li>
+<li><p><strong>info</strong> (<em>str</em><em>, </em><em>optional</em>) -- Description of this parameter</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.requestDeleteCustomParameter">
+<span class="sig-name descname"><span class="pre">requestDeleteCustomParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.requestDeleteCustomParameter" title="Link to this definition">#</a></dt>
+<dd><p>Delete custom parameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>parameter</strong> (<em>str</em>) -- Name of the parameter to delete</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.requestHotKeyList">
+<span class="sig-name descname"><span class="pre">requestHotKeyList</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.requestHotKeyList" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.requestMoveModel">
+<span class="sig-name descname"><span class="pre">requestMoveModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.requestMoveModel" title="Link to this definition">#</a></dt>
+<dd><p>request to move the model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) -- Location of model, x</p></li>
+<li><p><strong>y</strong> (<em>float</em>) -- Location of model, y</p></li>
+<li><p><strong>rot</strong> (<em>float</em><em>, </em><em>optional</em>) -- Rotating angle, range [-360, 360]</p></li>
+<li><p><strong>size</strong> (<em>float</em><em>, </em><em>optional</em>) -- Zoom ratio, default: 1</p></li>
+<li><p><strong>relative</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Whether the values are considered to be relative to the current model position</p></li>
+<li><p><strong>move_time</strong> (<em>float</em><em>, </em><em>optional</em>) -- Time of the move motion</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.requestParameterValue">
+<span class="sig-name descname"><span class="pre">requestParameterValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.requestParameterValue" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>parameter</strong> (<em>str</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.requestSetMultiParameterValue">
+<span class="sig-name descname"><span class="pre">requestSetMultiParameterValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_found</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'set'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.requestSetMultiParameterValue" title="Link to this definition">#</a></dt>
+<dd><p>Set values for any default or custom parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>parameter</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) -- Names of the parameters</p></li>
+<li><p><strong>value</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) -- Values of the data, [-1000000, 1000000]</p></li>
+<li><p><strong>weight</strong> (<em>float</em><em>, </em><em>optional</em>) -- You can mix the your value with vts face tracking parameter, from 0 to 1,</p></li>
+<li><p><strong>face_found</strong> (<em>bool</em><em>, </em><em>optional</em>) -- if true, you will tell VTubeStudio to consider the user face as found,
+s.t. you can control when the &quot;tracking lost&quot;</p></li>
+<li><p><strong>parameters</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+<li><p><strong>values</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.requestSetParameterValue">
+<span class="sig-name descname"><span class="pre">requestSetParameterValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_found</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'set'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.requestSetParameterValue" title="Link to this definition">#</a></dt>
+<dd><p>Set value for any default or custom parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>parameter</strong> (<em>str</em>) -- Name of the parameter</p></li>
+<li><p><strong>value</strong> (<em>float</em>) -- Value of the data, [-1000000, 1000000]</p></li>
+<li><p><strong>weight</strong> (<em>float</em><em>, </em><em>optional</em>) -- You can mix the your value with vts face tracking parameter, from 0 to 1,</p></li>
+<li><p><strong>face_found</strong> (<em>bool</em><em>, </em><em>optional</em>) -- if true, you will tell VTubeStudio to consider the user face as found,
+s.t. you can control when the &quot;tracking lost&quot;</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.requestTrackingParameterList">
+<span class="sig-name descname"><span class="pre">requestTrackingParameterList</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.requestTrackingParameterList" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyvts.VTSRequest.requestTriggerHotKey">
+<span class="sig-name descname"><span class="pre">requestTriggerHotKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hotkeyID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itemInstanceID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyvts.VTSRequest.requestTriggerHotKey" title="Link to this definition">#</a></dt>
+<dd><p>Trigger hotkey. # TODO, handle <cite>itemInstanceID</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>hotkeyID</strong> (<em>str</em>) -- Hotkey name or unique id of hotkey to execute,
+can be obtained via <cite>VTSRequest.requestHotKeyList()</cite></p></li>
+<li><p><strong>itemInstanceID</strong> (<em>str</em><em>, </em><em>optional</em>) -- Model ID of the hotkey. If left blank,
+it will trigger a hotkey for the currently loaded VTubeStudio model.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Organized message sending to <code class="docutils literal notranslate"><span class="pre">Vtubestudio</span> <span class="pre">API</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tutorial3_usingfunctions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="toctree4_contributing.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Contributing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts-vts">pyvts.vts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts"><code class="docutils literal notranslate"><span class="pre">vts</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.close"><code class="docutils literal notranslate"><span class="pre">vts.close()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.connect"><code class="docutils literal notranslate"><span class="pre">vts.connect()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.event_subscribe"><code class="docutils literal notranslate"><span class="pre">vts.event_subscribe()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.get_authentic_status"><code class="docutils literal notranslate"><span class="pre">vts.get_authentic_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.get_connection_status"><code class="docutils literal notranslate"><span class="pre">vts.get_connection_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.load_icon"><code class="docutils literal notranslate"><span class="pre">vts.load_icon()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.read_token"><code class="docutils literal notranslate"><span class="pre">vts.read_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.request"><code class="docutils literal notranslate"><span class="pre">vts.request()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.request_authenticate"><code class="docutils literal notranslate"><span class="pre">vts.request_authenticate()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.request_authenticate_token"><code class="docutils literal notranslate"><span class="pre">vts.request_authenticate_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.vts.write_token"><code class="docutils literal notranslate"><span class="pre">vts.write_token()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts-vtsrequest">pyvts.VTSRequest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest"><code class="docutils literal notranslate"><span class="pre">VTSRequest</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.BaseRequest"><code class="docutils literal notranslate"><span class="pre">VTSRequest.BaseRequest()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.ColorTintRequest"><code class="docutils literal notranslate"><span class="pre">VTSRequest.ColorTintRequest()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.authentication"><code class="docutils literal notranslate"><span class="pre">VTSRequest.authentication()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.authentication_token"><code class="docutils literal notranslate"><span class="pre">VTSRequest.authentication_token()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscribtionModelMoved"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscribtionModelMoved()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscription"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscription()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscriptionModelLoaded"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscriptionModelLoaded()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscriptionTest"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscriptionTest()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubscriptionTrackingStatusChanged"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubscriptionTrackingStatusChanged()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.eventSubsribtionModelOutline"><code class="docutils literal notranslate"><span class="pre">VTSRequest.eventSubsribtionModelOutline()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestCustomParameter"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestCustomParameter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestDeleteCustomParameter"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestDeleteCustomParameter()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestHotKeyList"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestHotKeyList()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestMoveModel"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestMoveModel()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestParameterValue"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestParameterValue()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestSetMultiParameterValue"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestSetMultiParameterValue()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestSetParameterValue"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestSetParameterValue()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestTrackingParameterList"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestTrackingParameterList()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvts.VTSRequest.requestTriggerHotKey"><code class="docutils literal notranslate"><span class="pre">VTSRequest.requestTriggerHotKey()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Genteki
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Genteki.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
